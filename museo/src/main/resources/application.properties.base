@@ -1,0 +1,11 @@
+spring.datasource.url = jdbc:postgresql://localhost[:port]/{DbName}
+spring.datasource.username = {Username}
+spring.datasource.password = {Password}
+spring.datasource.driverClassName = org.postgresql.Driver
+
+# Show or not log for each sql query
+spring.jpa.show-sql = true
+
+# Hibernate settings
+spring.jpa.hibernate.ddl-auto = create
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
