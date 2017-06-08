@@ -27,4 +27,14 @@ public class ArtistService {
 	public List<Artist> findAll(){
 		return this.repository.findAll();
 	}
+	
+	/*we could write: findAllBy(String something){
+	*	if(something.equals("name"){
+	*		return this.repository.findAllByName();
+	*	...
+	*	...
+	*/
+	public List<Artist> findAllByName(){
+		return this.repository.findAll();
+	}
 }

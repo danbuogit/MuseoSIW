@@ -16,5 +16,6 @@ public interface ArtistRepository extends CrudRepository<Artist, Long>{
 	
 	List<Artist> findAll();
 	
+	List<Artist> findAllByName();
 	
 }
