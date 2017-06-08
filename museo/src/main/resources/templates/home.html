@@ -8,6 +8,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<style>
+  		img {
+  			max-heigth : auto;
+  			max-width : 100%;
+  		}
 	    /* Remove the navbar's default margin-bottom and rounded borders */ 
 	    .navbar {
 	    	background-color: #990000;	
@@ -74,8 +78,8 @@
     		<div th:each="painting : ${listOfThreePainting}">
       			<div class="container-fluif text-left">
       				
-      				<img alt="http://clipart-library.com/images/gceo5gdoi.png" src="${painting.url}"/>
-      				<p th:text="${painting.artist} + ' - ' + ${painting.title} + ', ' + ${painting.year}"/>
+      				<img src="'' + ${painting.url}"/>
+      				<p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ' - ' + ${painting.title} + ', ' + ${painting.year}"/>
       				
       			</div>
       		</div>
@@ -84,7 +88,7 @@
     	</div>
     	<div class="col-sm-2 sidenav">
       		<div class="well">
-      			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Louvre_Museum_Wikimedia_Commons.jpg/800px-Louvre_Museum_Wikimedia_Commons.jpg"></img>
+      			<img src="http://prenotazioni.parigi.it/img/cover/thumb_161111163223.jpg"></img>
         		<p><a href="http://www.louvre.fr/en">Our partnerships!</a></p>
       		</div>
       		<div class="well">

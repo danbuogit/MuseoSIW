@@ -20,7 +20,7 @@ public class HomeController {
 	@GetMapping("/homeController")
 	public String getMostRecentPainting(Model model){
 		
-		List<Painting> listOfThreePainting = service.findFirstThree();		
+		List<Painting> listOfThreePainting = service.findFirstThree();
 		model.addAttribute("listOfThreePainting", listOfThreePainting);
 		
 		return "home";
