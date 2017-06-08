@@ -43,6 +43,22 @@ public class PaintingService {
 		return this.repository.findAll().subList(0, 9);
 	}
 	
+	public List<Painting> findFirstTenOrderedBy(String order){
+		
+		List<Painting> list;
+			if(order.equals("artist")){
+				list = this.repository.findFirst10ByOrderByArtist();
+			}
+			else if(order.equals("year")){
+				list = this.repository.findFirst10ByOrderByYear();
+			}
+			else{
+				list = this.repository.findFirst10ByOrderByTitle();
+			}
+			
+		return list;
+	}
+	
 	public List<Painting> findFirstThree(){
 		//it can be improved
 		return this.repository.findAll().subList(0, 2);

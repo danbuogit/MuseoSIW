@@ -3,8 +3,6 @@ package com.dbaab.museo.model;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 @Entity
 public class Painting {
 	@Id
