@@ -19,4 +19,10 @@ public interface PaintingRepository extends CrudRepository<Painting, Long>{
 	void delete(long id);
 	
 	void delete(Painting painting);
+	
+	List<Painting> findFirst10ByOrderByTitle();
+	
+	List<Painting> findFirst10ByOrderByYear();
+	
+	List<Painting> findFirst10ByOrderByArtist();
 }
