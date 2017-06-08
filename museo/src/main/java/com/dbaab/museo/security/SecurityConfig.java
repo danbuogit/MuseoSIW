@@ -21,24 +21,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
-
-        auth.jdbcAuthentication().dataSource(dataSource)
-
-                .passwordEncoder(new BCryptPasswordEncoder()).usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
-                .authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//            .passwordEncoder(new BCryptPasswordEncoder()).usersByUsernameQuery("SELECT username,password,1 FROM users WHERE username=?")
+//            .authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
         // we must set what page should be ignored from the security
-        http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/museo/login.html").permitAll().and().logout().permitAll();
+//        http
+//        .authorizeRequests()
+//            .anyRequest().authenticated()
+//            .and()
+//        .formLogin()
+//            .loginPage("/login.html")
+//            .permitAll()
+//            .and()
+//        .logout()
+//            .permitAll();
     }
 
     // this seems not working...
     @Override
     public void configure(WebSecurity web) throws Exception
     {
-        web.ignoring().antMatchers("/resources/**");
+//        web.ignoring().antMatchers("/resources/**");
     }
 }
