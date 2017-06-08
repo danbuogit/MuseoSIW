@@ -4,87 +4,105 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-public class Painting {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
-	@NotNull
-	private String title;
-	
-	@NotNull
-	private Integer year;
-	
-	@NotNull
-	private String tecnique;
-	
-	@NotNull
-	private String dimensions;
-	
-	@NotNull
-	@Size(max=500)
-	@Column(length=500)
-	private String url;
-	
-	@NotNull
-	@ManyToOne
-	private Artist artist;
-	
-	public Painting() { }
+public class Painting
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-	public long getId() {
-		return id;
-	}
+    @NotNull
+    private String title;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @NotNull
+    private Integer year;
 
-	public String getTitle() {
-		return title;
-	}
+    @NotNull
+    private String tecnique;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    @NotNull
+    private String dimensions;
 
-	public Integer getYear() {
-		return year;
-	}
+    @NotNull
+    @Size(max = 500)
+    @Column(length = 500)
+    private String url;
 
-	public void setYear(Integer year) {
-		this.year = year;
-	}
+    @NotNull
+    @ManyToOne
+    private Artist artist;
 
-	public String getTecnique() {
-		return tecnique;
-	}
+    public Painting()
+    {}
 
-	public void setTecnique(String tecnique) {
-		this.tecnique = tecnique;
-	}
+    // GET & SET
+    
+    public long getId()
+    {
+        return id;
+    }
 
-	public String getDimensions() {
-		return dimensions;
-	}
+    public void setId(long id)
+    {
+        this.id = id;
+    }
 
-	public void setDimensions(String dimensions) {
-		this.dimensions = dimensions;
-	}
-	
-	public String getUrl(){
-		return url;
-	}
-	
-	public void setUrl(String url){
-		this.url=url;
-	}
-	
-	public Artist getArtist() {
-		return artist;
-	}
+    public String getTitle()
+    {
+        return title;
+    }
 
-	public void setArtist(Artist artist) {
-		this.artist = artist;
-	}
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    public Integer getYear()
+    {
+        return year;
+    }
+
+    public void setYear(Integer year)
+    {
+        this.year = year;
+    }
+
+    public String getTecnique()
+    {
+        return tecnique;
+    }
+
+    public void setTecnique(String tecnique)
+    {
+        this.tecnique = tecnique;
+    }
+
+    public String getDimensions()
+    {
+        return dimensions;
+    }
+
+    public void setDimensions(String dimensions)
+    {
+        this.dimensions = dimensions;
+    }
+
+    public String getUrl()
+    {
+        return url;
+    }
+
+    public void setUrl(String url)
+    {
+        this.url = url;
+    }
+
+    public Artist getArtist()
+    {
+        return artist;
+    }
+
+    public void setArtist(Artist artist)
+    {
+        this.artist = artist;
+    }
 }
