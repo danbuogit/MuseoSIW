@@ -17,7 +17,7 @@ public class ArtistsPageController {
 	ArtistService service;
 	
 	@GetMapping("/artistController")
-	public String GetArtistList(Model model){
+	public String getArtistList(Model model){
 		
 		List<Artist> listArtists = service.findAllByName();
 		model.addAttribute(listArtists);
