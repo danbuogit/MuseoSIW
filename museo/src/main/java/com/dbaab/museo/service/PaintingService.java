@@ -14,14 +14,14 @@ public class PaintingService {
 	
 	@Autowired
 	PaintingRepository repository;
-	
-	public Painting findById(long id){
-		return this.repository.findOne(id);
-	}
-	
+
 	@Transactional
 	public Painting save(Painting painting){
 		return this.repository.save(painting);
+	}
+	
+	public Painting findById(long id){
+		return this.repository.findOne(id);
 	}
 	
 	public List<Painting> findAll(){
@@ -50,7 +50,7 @@ public class PaintingService {
 				list = this.repository.findFirst10ByOrderByArtist();
 			}
 			else if(order.equals("year")){
-				list = this.repository.findFirst10ByOrderByYear();
+				list = this.repository.findFirst10ByOrderByYearAsc();
 			}
 			else{
 				list = this.repository.findFirst10ByOrderByTitle();

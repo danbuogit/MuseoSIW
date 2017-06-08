@@ -20,7 +20,7 @@ public class ArtistService {
 		return this.repository.save(artist);
 	}
 	
-	public Artist findOne(long id){
+	public Artist findById(long id){
 		return this.repository.findOne(id);
 	}
 	
@@ -34,7 +34,7 @@ public class ArtistService {
 	*	...
 	*	...
 	*/
-	public List<Artist> findAllByName(){
-		return this.repository.findAll();
+	public List<Artist> findAllOrderByName(){
+		return this.repository.findAllByOrderByName();
 	}
 }
