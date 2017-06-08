@@ -3,9 +3,7 @@ package com.dbaab.museo.model;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-@EntityScan
+@Entity
 public class Painting {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

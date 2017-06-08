@@ -6,9 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-@EntityScan
+@Entity
 public class Artist {
 	
 	@Id

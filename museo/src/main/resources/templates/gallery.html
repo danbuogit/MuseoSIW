@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="it">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Galleria</title>
-	<meta charset="utf-8">
-	<!-- sottostante: meta name="viewport". Necessario cambiare? -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="ISO-8859-1">
+<title>Galleria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,8 +11,9 @@
   	<style>
 	    /* Remove the navbar's default margin-bottom and rounded borders */ 
 	    .navbar {
-	      margin-bottom: 0;
-	      border-radius: 0;
+	    	background-color: #990000;	
+	     	margin-bottom: 0;
+	      	border-radius: 0;
 	    }
 	    
 	    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -23,28 +21,26 @@
 	    
 	    /* Set gray background color and 100% height */
 	    .sidenav {
-	      padding-top: 20px;
-	      background-color: #f1f1f1;
-	      height: 100%;
+	      	padding-top: 20px;
+	      	background-color: #f1f1f1;
+	      	height: 100%;
 	    }
 	    
 	    /* Set black background color, white text and some padding */
 	    footer {
-	      background-color: #555;
-	      color: white;
-	      padding: 15px;
+	      	background-color: #990000;      
+	      	padding: 15px;
 	    }
 	    
 	    /* On small screens, set height to 'auto' for sidenav and grid */
 	    @media screen and (max-width: 767px) {
-	      .sidenav {
+	    .sidenav {
 	        height: auto;
 	        padding: 15px;
 	      }
 	      .row.content {height:auto;} 
 	    }
   	</style>
-</head>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -59,9 +55,9 @@
     	</div>
     	<div class="collapse navbar-collapse" id="myNavbar">
       		<ul class="nav navbar-nav">
-        		<li><a href="mainPage.jsp">Home</a></li>
+        		<li><a href="index.html">Home</a></li>
         		<li class="active"><a href="#">Galleria</a></li>
-        		<li><a href="#">Artisti</a></li>
+        		<li><a href="artistList.html">Artisti</a></li>
         		<li><a href="#">Contact</a></li>
       		</ul>
       		<ul class="nav navbar-nav navbar-right">
@@ -78,7 +74,7 @@
             			<li><a href="#">Anno</a></li>
           			</ul>
           		</li>
-        		<li><a href="loginForm.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        		<li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       		</ul>
       		<!-- barra di ricerca, bisogna impostare l'action-->
       		<form class="navbar-form navbar-right" action="#" method="post">
