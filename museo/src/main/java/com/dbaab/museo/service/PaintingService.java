@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dbaab.museo.model.Painting;
 import com.dbaab.museo.repository.PaintingRepository;
@@ -18,6 +19,7 @@ public class PaintingService {
 		return this.repository.findOne(id);
 	}
 	
+	@Transactional
 	public Painting save(Painting painting){
 		return this.repository.save(painting);
 	}
@@ -26,10 +28,12 @@ public class PaintingService {
 		return this.repository.findAll();
 	}
 	
+	@Transactional
 	public void delete(long id){
 		this.repository.delete(id);
 	}
 	
+	@Transactional
 	public void delete(Painting painting){
 		this.repository.delete(painting);
 	}

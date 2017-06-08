@@ -8,14 +8,5 @@ import com.dbaab.museo.service.PaintingService;
 
 @Controller
 public class GalleryController {
-	
-	@Autowired
-	PaintingService service;
-	
-	//the request shuold have a parameter "orderBy", by default empty
-	
-	@GetMapping("/galleryController")
-	public void GeneratePaintingList(){
-		//should call the request, check the "orderBy" and give the list of painting
-	}
+
 }

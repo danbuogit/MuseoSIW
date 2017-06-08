@@ -21,15 +21,15 @@ public class App
         SpringApplication.run(App.class, args);
     }
     
-    @Bean
-	public CommandLineRunner demo(AdminService service) {
-		return (args) -> {
-			
-	        Admin a = new Admin();
-	        a.setId(1);
-	        a.setName("danbuo");
-	        a.setPassword("danbuo");
-			service.save(a);
-		};
-	}
+//  @Bean
+//	public CommandLineRunner demo(AdminService service) {
+//		return (args) -> {
+//			
+//	        Admin a = new Admin();
+//	        a.setId(1);
+//	        a.setName("danbuo");
+//	        a.setPassword("danbuo");
+//			service.save(a);
+//		};
+//	}
 }
