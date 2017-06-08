@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Home</title>
-<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -59,7 +58,7 @@
         		<!-- href -> dovrebbe fare riferimento ad una servlet che fornisca i primi dieci quadri? -->
         		<li><a href="galleryController">Galleria</a></li>
         		<!-- href deve riferirsi ad una servlet che fornisca tutti(?) gli artisti presenti in galleria -->
-        		<li><a href="artistList.html">Artisti</a></li>
+        		<li><a href="artistController">Artisti</a></li>
         		<li><a href="#">Contact</a></li>
       		</ul>
       		<ul class="nav navbar-nav navbar-right">
@@ -72,17 +71,25 @@
 <div class="container-fluid text-center">    
   	<div class="row content">
     	<div class="col-sm-8 text-left"> 
-      		<h1>Quadri recenti</h1>
-      		<p>Qui dovrebbero essere mostrati i quadri recenti (I primi tre?)</p>
-      		<hr>
-      		<h3>Mostrare altre info?</h3>
+    		<div th:each="painting : ${listOfThreePainting}">
+      			<div class="container-fluif text-left">
+      				
+      				<img alt="http://clipart-library.com/images/gceo5gdoi.png" src="${painting.url}"/>
+      				<p th:text="${painting.artist} + ' - ' + ${painting.title} + ', ' + ${painting.year}"/>
+      				
+      			</div>
+      		</div>
+      		<hr></hr>
+      		<h3>Puoi continuare a consultare gli altri quadri nella <a href="galleryController">galleria</a>.</h3>
     	</div>
     	<div class="col-sm-2 sidenav">
       		<div class="well">
-        		<p>Metterci qualcosa</p>
+      			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Louvre_Museum_Wikimedia_Commons.jpg/800px-Louvre_Museum_Wikimedia_Commons.jpg"></img>
+        		<p><a href="http://www.louvre.fr/en">Our partnerships!</a></p>
       		</div>
       		<div class="well">
-        		<p>o togliergli completamente?</p>
+      			<img src="http://host.uniroma3.it/uffici/urp/images/RomaTre.jpg"></img>
+        		<p><a href="http://www.uniroma3.it/">Our sponsor</a></p>
       		</div>
     	</div>
   	</div>

@@ -1,4 +1,4 @@
-package com.dbaab.museo.security;
+/*package com.dbaab.museo.security;
  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -49,3 +49,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/resources/**");
     }
 }
+*/

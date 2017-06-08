@@ -40,7 +40,7 @@ public class PaintingService {
 	
 	public List<Painting> findFirstTen(){
 		//it can be improved
-		return this.repository.findAll().subList(0, 9);
+		return this.repository.findAll().subList(0, 10);
 	}
 	
 	public List<Painting> findFirstTenOrderedBy(String order){
@@ -61,6 +61,6 @@ public class PaintingService {
 	
 	public List<Painting> findFirstThree(){
 		//it can be improved
-		return this.repository.findAll().subList(0, 2);
+		return this.repository.findAll().subList(0, 3);
 	}
 }

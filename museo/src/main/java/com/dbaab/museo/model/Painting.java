@@ -21,7 +21,6 @@ public class Painting {
 	@NotNull
 	private String dimensions;
 	
-	@NotNull
 	@Size(max=500)
 	@Column(length=500)
 	private String url;
