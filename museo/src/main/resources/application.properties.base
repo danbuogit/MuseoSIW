@@ -1,11 +1,25 @@
+server.port = 8080
+spring.cache.type = none
+
+# Internationalization
+spring.messages.basename = messages/messages
+spring.messages.encoding = UTF-8
+
+# Datasource
+spring.datasource.platform = postgres
 spring.datasource.url = jdbc:postgresql://localhost[:port]/{DbName}
 spring.datasource.username = {Username}
 spring.datasource.password = {Password}
 spring.datasource.driverClassName = org.postgresql.Driver
 
-# Show or not log for each sql query
+# Hibernate
 spring.jpa.show-sql = true
-
-# Hibernate settings
 spring.jpa.hibernate.ddl-auto = create
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# Security
+security.basic.enabled = false
+
+# Thymeleaf
+spring.thymeleaf.cache = false
+spring.thymeleaf.encoding = UTF-8
