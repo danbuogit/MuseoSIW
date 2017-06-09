@@ -93,12 +93,14 @@
   	<div class="row content">
     	<div class="col-sm-8 text-left">
     		<hr/>
-    		<div th:each="painting : ${paintingList}">
-    			<div class="container-fluif text-left">
-    				<img th:src="${painting.url}"/>
-    				<p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ' - ' + ${painting.title} + ', ' + ${painting.year}"></p>
+    		<div th:if="${paintingList != null}">
+    			<div th:each="painting : ${paintingList}">
+    				<div class="container-fluif text-left">
+    					<img th:src="${painting.url}"/>
+    					<p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ' - ' + ${painting.title} + ', ' + ${painting.year}"></p>
+    				</div>
     			</div>
-    		</div>
+    		</div>	
     	</div>
     </div>
 </div>
