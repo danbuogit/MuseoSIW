@@ -34,7 +34,7 @@ public class GalleryController {
 			paintingList = service.findFirstTenOrderedBy(order2);
 		}
 		
-		model.addAttribute(paintingList);
+		model.addAttribute("paintingList", paintingList);
 		
 		return "gallery";		
 	}
