@@ -13,6 +13,7 @@
     <h2>Hello <strong sec:authentication="principal.username"><i>Anonymous</i></strong>!</h2>
     <p sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}">
       You are authenticated as <i><span sec:authentication="principal.authorities"></span></i>.
+        <a th:href="homeController">Torna al sito</a>
     </p>
     <form th:action="@{/logout}" method="post">
       <input type="submit" value="Sign Out" />

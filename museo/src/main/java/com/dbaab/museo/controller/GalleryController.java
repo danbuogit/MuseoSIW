@@ -15,16 +15,19 @@ import com.dbaab.museo.model.Painting;
 import com.dbaab.museo.service.PaintingService;
 
 @Controller
+@RequestMapping("/galleryController")
 public class GalleryController
 {
     @Autowired
     private PaintingService service;
 
-    @GetMapping("/galleryController")
+    @RequestMapping(method = RequestMethod.GET)
     public String getFirstTenPictures(Model model, @RequestParam(value = "order", required = false) String order)
     {
         List<Painting> paintingList;
-
+        
+        System.out.println(order);
+        
         if (order == null || order.equals("none"))
             paintingList = service.findFirstTen();
         else

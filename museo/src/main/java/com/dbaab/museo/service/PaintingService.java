@@ -1,6 +1,5 @@
 package com.dbaab.museo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,10 +47,14 @@ public class PaintingService
     {
         List<Painting> list = null;
         //così li ordina per id!
-        if (order.equals("artist"))
-            list = this.repository.findFirst10ByOrderByArtist();
-        else if (order.equals("year"))
-            list = this.repository.findFirst10ByOrderByYear();
+        if (order.equals("artistName"))
+            list = this.repository.findFirst10ByOrderByArtistName();
+        else if (order.equals("artistSurname"))
+        	list = this.repository.findFirst10ByOrderByArtistSurname();
+        else if (order.equals("yearAsc"))
+            list = this.repository.findFirst10ByOrderByYearAsc();
+        else if (order.equals("yearDesc"))
+        	list= this.repository.findFirst10ByOrderByYearDesc();
         else if (order.equals("title"))
             list = this.repository.findFirst10ByOrderByTitle();
 
