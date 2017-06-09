@@ -3,9 +3,10 @@ package com.dbaab.museo.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dbaab.museo.model.Admin;
+import com.dbaab.museo.model.User;
 
 @Repository
-public interface AdminRepository extends CrudRepository<Admin, Long>
+public interface UserRepository extends CrudRepository<User, Long>
 {
+    User findByUsername(String username);
 }
