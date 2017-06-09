@@ -27,7 +27,7 @@ public class GalleryController
     {
         List<Painting> paintingList;
 
-        if (order == null)
+        if (order == null || order.equals("none"))
             paintingList = service.findFirstTen();
         else
             paintingList = service.findFirstTenOrderedBy(order2);

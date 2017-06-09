@@ -59,12 +59,20 @@ public class PaintingService
     public List<Painting> findFirstThree()
     {
         // TODO: Improve
-        return this.repository.findAll().subList(0, 3);
+        try {
+			return this.repository.findAll().subList(0, 3);
+		} catch (Exception e) {
+			return this.repository.findAll();
+		}
     }
 
     public List<Painting> findFirstTen()
     {
         // TODO: Improve
-        return this.repository.findAll().subList(0, 10);
+        try {
+			return this.repository.findAll().subList(0, 10);
+		} catch (Exception e) {
+			return this.repository.findAll();
+		}
     }
 }
