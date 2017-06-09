@@ -78,13 +78,13 @@
     		<div th:each="painting : ${listOfThreePainting}">
       			<div class="container-fluif text-left">
       				
-      				<img src="'' + ${painting.url}"/>
+      				<img th:src="${painting.url}"/>
       				<p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ' - ' + ${painting.title} + ', ' + ${painting.year}"/>
       				
       			</div>
       		</div>
       		<hr></hr>
-      		<h3>Puoi continuare a consultare gli altri quadri nella <a href="galleryController">galleria</a>.</h3>
+      		<h4>Puoi continuare a consultare gli altri quadri nella <a href="galleryController">galleria</a>.</h4>
     	</div>
     	<div class="col-sm-2 sidenav">
       		<div class="well">
