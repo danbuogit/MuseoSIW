@@ -3,6 +3,8 @@ package com.dbaab.museo.model;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Painting
 {
@@ -10,16 +12,16 @@ public class Painting
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotEmpty
     private String title;
 
     @NotNull
     private Integer year;
 
-    @NotNull
+    @NotEmpty
     private String tecnique;
 
-    @NotNull
+    @NotEmpty
     private String dimensions;
 
     @Size(max = 500)
