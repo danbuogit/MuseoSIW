@@ -1,9 +1,6 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-# application.properties (REMOVE WHEN/IF DEPLOYING TO AWS)
-src/main/resources/application.properties
-
 ### STS ###
 .apt_generated
 .classpath
