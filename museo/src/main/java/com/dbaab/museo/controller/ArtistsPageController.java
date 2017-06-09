@@ -1,5 +1,7 @@
 package com.dbaab.museo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +19,8 @@ public class ArtistsPageController
     @GetMapping("/artistController")
     public String GetArtistList(Model model)
     {
-        Iterable<Artist> artists = service.findAllByName();
-        model.addAttribute(artists);
+        List<Artist> listArtists = service.findAllOrderedByName();
+        model.addAttribute("artistList", listArtists);
         return "artistList";
     }
 }

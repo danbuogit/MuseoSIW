@@ -13,7 +13,7 @@ import com.dbaab.museo.repository.PaintingRepository;
 public class PaintingService
 {
     @Autowired
-    PaintingRepository repository;
+    private PaintingRepository repository;
 
     public Painting findById(Long id)
     {
@@ -26,7 +26,7 @@ public class PaintingService
         return this.repository.save(painting);
     }
 
-    public Iterable<Painting> findAll()
+    public List<Painting> findAll()
     {
         return this.repository.findAll();
     }
@@ -49,20 +49,22 @@ public class PaintingService
         if (order.equals("artist"))
             list = this.repository.findFirst10ByOrderByArtist();
         else if (order.equals("year"))
-            list = this.repository.findFirst10ByOrderByYear();
+            list = this.repository.findFirst10ByOrderByYearAsc();
         else if (order.equals("title"))
             list = this.repository.findFirst10ByOrderByTitle();
 
         return list;
     }
 
-    public Iterable<Painting> findFirstThree()
+    public List<Painting> findFirstThree()
     {
-        return this.repository.findAll();
+        // TODO: Improve
+        return this.repository.findAll().subList(0, 3);
     }
 
-    public Iterable<Painting> findFirstTen()
+    public List<Painting> findFirstTen()
     {
-        return this.repository.findAll();
+        // TODO: Improve
+        return this.repository.findAll().subList(0, 10);
     }
 }

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
 <title>Galleria</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="ISO-8859-1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<style>
+  		img {
+  			max-height : auto;
+  			max-width : 100%;
+  		}
 	    /* Remove the navbar's default margin-bottom and rounded borders */ 
 	    .navbar {
 	    	background-color: #990000;	
@@ -64,7 +67,7 @@
       			<li class="dropdown"><!-- menu per ordinare i quadri -->
           		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordina per<span class="caret"></span></a>
           			<ul class="dropdown-menu">
-          				<!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto � necessario per fornire la giusta intavolazione -->
+          				<!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto è necessario per fornire la giusta intavolazione -->
           				<li><a>Artista</a></li>
           				<li role="separator" class="divider"></li>
             			<li><a href="#">+Artista: nome</a></li>
@@ -89,7 +92,14 @@
 <div class="container-fluid text-center">    
   	<div class="row content">
     	<div class="col-sm-8 text-left">
-    	<h1>Qui devono essere mostrati i primi dieci (?) quadri, con titolo, autore ed anno al fianco</h1>
+    		<hr/>
+    		<div th:each="painting : ${paintingList}">
+    			<!-- per aggiungere i pulsanti rimuovi e modifica, mettili in questo div sottostante, non fare caso al fatto che alcune informazioni non sono mostrare. è un abbozzo di quello che sarà in futuro, ci sto lavorando -->
+    			<div class="container-fluif text-left">
+    				<img th:src="${painting.url}">
+    				<p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ' - ' + ${painting.title} + ', ' + ${painting.year}"></p>
+    			</div>
+    		</div>
     	</div>
     </div>
 </div>

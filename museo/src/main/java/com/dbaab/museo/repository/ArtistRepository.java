@@ -10,5 +10,6 @@ import com.dbaab.museo.model.Artist;
 @Repository
 public interface ArtistRepository extends CrudRepository<Artist, Long>
 {
+    List<Artist> findAll();
     List<Artist> findAllByOrderByName();
 }

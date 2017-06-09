@@ -1,5 +1,7 @@
 package com.dbaab.museo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,15 +26,17 @@ public class ArtistService
         return this.repository.findOne(id);
     }
 
-    public Iterable<Artist> findAll()
+    public List<Artist> findAll()
     {
         return this.repository.findAll();
     }
 
-    /* we could write: findAllBy(String something){ if(something.equals("name"){
-     * return this.repository.findAllByName(); ... ... */
-    public Iterable<Artist> findAllByName()
+    /* we could write: findAllBy(String something){
+     * if(something.equals("name"){
+     *     return this.repository.findAllByName();
+     * ... */
+    public List<Artist> findAllOrderedByName()
     {
-        return this.repository.findAll();
+        return this.repository.findAllByOrderByName();
     }
 }
