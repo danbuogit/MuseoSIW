@@ -2,14 +2,14 @@ package com.dbaab.museo.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserRole
@@ -18,9 +18,9 @@ public class UserRole
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotEmpty
-    @Column(length = 24)
-    private String role;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Role role;
     
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
@@ -28,7 +28,7 @@ public class UserRole
     public UserRole()
     {}
 
-    public UserRole(String role)
+    public UserRole(Role role)
     {
         this.role = role;
     }
@@ -45,12 +45,12 @@ public class UserRole
         this.id = id;
     }
 
-    public String getRole()
+    public Role getRole()
     {
         return role;
     }
 
-    public void setRole(String role)
+    public void setRole(Role role)
     {
         this.role = role;
     }

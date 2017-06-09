@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dbaab.museo.model.Role;
 import com.dbaab.museo.model.UserRole;
 import com.dbaab.museo.repository.UserRoleRepository;
 
@@ -16,7 +17,7 @@ public class UserRoleService
     /** Retrieves a UserRole entity by its role name.
      * @param role - the role name
      * @return the retrieved UserRole */
-    public UserRole findByRole(String role)
+    public UserRole findByRole(Role role)
     {
         return this.repository.findByRole(role);
     }
@@ -25,7 +26,7 @@ public class UserRoleService
      * @param role - the role name
      * @return the retrieved or created UserRole */
     @Transactional
-    public UserRole findByRoleOrCreate(String role)
+    public UserRole findByRoleOrCreate(Role role)
     {
         UserRole userRole = this.repository.findByRole(role);
         if (userRole == null)
