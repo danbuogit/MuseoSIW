@@ -78,7 +78,11 @@ public class PaintingService
         try {
 			return this.repository.findAll().subList(0, 10);
 		} catch (Exception e) {
-			return this.repository.findAll();
+			try {
+				return this.repository.findAll();
+			} catch (Exception e2) {
+				return null;
+			}
 		}
     }
 }
