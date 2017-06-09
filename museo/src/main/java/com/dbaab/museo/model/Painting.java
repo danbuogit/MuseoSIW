@@ -8,7 +8,7 @@ public class Painting
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotNull
     private String title;
@@ -35,12 +35,12 @@ public class Painting
 
     // GET & SET
     
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }

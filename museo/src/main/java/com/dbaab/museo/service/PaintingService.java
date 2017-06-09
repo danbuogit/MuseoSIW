@@ -1,6 +1,5 @@
 package com.dbaab.museo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,45 +43,30 @@ public class PaintingService
         this.repository.delete(painting);
     }
 
-    public List<Painting> findFirstTenOrderedBy(String order)
+    public List<Painting> findFirst10OrderedBy(String order)
     {
         List<Painting> list = null;
-        //così li ordina per id!
+
+        // così li ordina per id!
         if (order.equals("artist"))
             list = this.repository.findFirst10ByOrderByArtist();
         else if (order.equals("year"))
             list = this.repository.findFirst10ByOrderByYear();
         else if (order.equals("title"))
             list = this.repository.findFirst10ByOrderByTitle();
+        else
+            list = this.findFirst10();
 
         return list;
     }
 
-    public List<Painting> findFirstThree()
+    public List<Painting> findFirst3()
     {
-        // TODO: Improve
-        try {
-			return this.repository.findAll().subList(0, 3);
-		} catch (Exception e1) {
-			try {
-				return this.repository.findAll();
-			} catch (Exception e2) {
-				return null;
-			}
-		}
+        return this.repository.findFirst3By();
     }
 
-    public List<Painting> findFirstTen()
+    public List<Painting> findFirst10()
     {
-        // TODO: Improve
-        try {
-			return this.repository.findAll().subList(0, 10);
-		} catch (Exception e) {
-			try {
-				return this.repository.findAll();
-			} catch (Exception e2) {
-				return null;
-			}
-		}
+        return this.repository.findFirst10By();
     }
 }
