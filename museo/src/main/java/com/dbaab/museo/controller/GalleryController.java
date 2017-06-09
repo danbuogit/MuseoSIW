@@ -14,28 +14,26 @@ import com.dbaab.museo.model.Painting;
 import com.dbaab.museo.service.PaintingService;
 
 @Controller
-public class GalleryController {
-	
-	@Autowired
-	PaintingService service;
-	
-	@RequestMapping(method=RequestMethod.GET, value={"galleryController","galleryController/{order}"})
-	public String getFirstTenPictures(
-			Model model,
-			@RequestParam(value="order", required=false) String order,
-			@PathVariable("order") String order2){
-		
-		List<Painting> paintingList;
-		
-		if(order==null){
-			paintingList = service.findFirstTen();
-		}
-		else{
-			paintingList = service.findFirstTenOrderedBy(order2);
-		}
-		
-		model.addAttribute("paintingList", paintingList);
-		
-		return "gallery";		
-	}
+public class GalleryController
+{
+    @Autowired
+    private PaintingService service;
+
+    @RequestMapping(method = RequestMethod.GET, value = { "galleryController", "galleryController/{order}" })
+    public String getFirstTenPictures(
+        Model model,
+        @RequestParam(value = "order", required = false) String order,
+        @PathVariable("order") String order2)
+    {
+        List<Painting> paintingList;
+
+        if (order == null)
+            paintingList = service.findFirstTen();
+        else
+            paintingList = service.findFirstTenOrderedBy(order2);
+
+        model.addAttribute("paintingList", paintingList);
+
+        return "gallery";
+    }
 }

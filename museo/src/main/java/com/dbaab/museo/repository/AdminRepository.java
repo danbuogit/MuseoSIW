@@ -8,9 +8,4 @@ import com.dbaab.museo.model.Admin;
 @Repository
 public interface AdminRepository extends CrudRepository<Admin, Long>
 {
-		Admin save(Admin admin);
-		
-		Admin findOne(Long id);
-		
-		
 }

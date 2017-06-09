@@ -11,17 +11,16 @@ import com.dbaab.museo.model.Artist;
 import com.dbaab.museo.service.ArtistService;
 
 @Controller
-public class ArtistsPageController {
-	
-	@Autowired
-	ArtistService service;
-	
-	@GetMapping("/artistController")
-	public String getArtistList(Model model){
-		
-		
-		List<Artist> listArtists = service.findAllOrderByName();
-		model.addAttribute("artistList", listArtists);
-		return "artistList";
-	}
+public class ArtistsPageController
+{
+    @Autowired
+    private ArtistService service;
+
+    @GetMapping("/artistController")
+    public String GetArtistList(Model model)
+    {
+        List<Artist> listArtists = service.findAllOrderedByName();
+        model.addAttribute("artistList", listArtists);
+        return "artistList";
+    }
 }

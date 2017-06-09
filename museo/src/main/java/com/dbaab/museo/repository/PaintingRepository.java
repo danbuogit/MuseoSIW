@@ -8,21 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.dbaab.museo.model.Painting;
 
 @Repository
-public interface PaintingRepository extends CrudRepository<Painting, Long>{
-	
-	Painting save(Painting painting);
-	
-	Painting findOne(long id);
-	
-	List<Painting> findAll();
-	
-	void delete(long id);
-	
-	void delete(Painting painting);
-	
-	List<Painting> findFirst10ByOrderByTitle();
-	
-	List<Painting> findFirst10ByOrderByYearAsc();
-	
-	List<Painting> findFirst10ByOrderByArtist();
+public interface PaintingRepository extends CrudRepository<Painting, Long>
+{
+    List<Painting> findAll();
+    List<Painting> findFirst10ByOrderByTitle();
+    List<Painting> findFirst10ByOrderByYearAsc();
+    List<Painting> findFirst10ByOrderByArtist();
 }

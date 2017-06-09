@@ -10,31 +10,33 @@ import com.dbaab.museo.model.Artist;
 import com.dbaab.museo.repository.ArtistRepository;
 
 @Service
-public class ArtistService {
-	
-	@Autowired
-	ArtistRepository repository;
-	
-	@Transactional
-	public Artist save(Artist artist){
-		return this.repository.save(artist);
-	}
-	
-	public Artist findById(long id){
-		return this.repository.findOne(id);
-	}
-	
-	public List<Artist> findAll(){
-		return this.repository.findAll();
-	}
-	
-	/*we could write: findAllBy(String something){
-	*	if(something.equals("name"){
-	*		return this.repository.findAllByName();
-	*	...
-	*	...
-	*/
-	public List<Artist> findAllOrderByName(){
-		return this.repository.findAllByOrderByName();
-	}
+public class ArtistService
+{
+    @Autowired
+    ArtistRepository repository;
+
+    @Transactional
+    public Artist save(Artist artist)
+    {
+        return this.repository.save(artist);
+    }
+
+    public Artist findOne(Long id)
+    {
+        return this.repository.findOne(id);
+    }
+
+    public List<Artist> findAll()
+    {
+        return this.repository.findAll();
+    }
+
+    /* we could write: findAllBy(String something){
+     * if(something.equals("name"){
+     *     return this.repository.findAllByName();
+     * ... */
+    public List<Artist> findAllOrderedByName()
+    {
+        return this.repository.findAllByOrderByName();
+    }
 }
