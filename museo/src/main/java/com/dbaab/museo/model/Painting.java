@@ -19,7 +19,7 @@ public class Painting
     private Integer year;
 
     @NotEmpty
-    private String tecnique;
+    private String technique;
 
     @NotEmpty
     private String dimensions;
@@ -67,14 +67,14 @@ public class Painting
         this.year = year;
     }
 
-    public String getTecnique()
+    public String getTechnique()
     {
-        return tecnique;
+        return technique;
     }
 
-    public void setTecnique(String tecnique)
+    public void setTechnique(String technique)
     {
-        this.tecnique = tecnique;
+        this.technique = technique;
     }
 
     public String getDimensions()

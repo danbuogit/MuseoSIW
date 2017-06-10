@@ -1,40 +1,97 @@
-.navbar
-{
-  background-color: #900;
+@CHARSET "UTF-8";
+
+/*********************************
+ * base-color: #992525
+ *********************************/
+
+.dbaab-container {
+  box-shadow: 0px 0px 8px 0px;
+}
+@media screen and (min-width: 767px){
+  .dbaab-container {
+    width: 70%;
+  }
+}
+
+#main-content {
+  padding: 30px 15px;
+}
+
+
+/*—————————————————*
+ |     GALLERY     |
+ *—————————————————*/
+.dbaab-painting-panel {
+  margin: 1vw 0;
+}
+.dbaab-painting-panel > .panel-body {
+  padding: 0.8vw;
+}
+
+.dbaab-painting-panel-img {
+  padding: 0px;
+}
+
+.dbaab-painting-panel-img img {
+  max-width: 15vw;
+  padding: 5px;
+}
+
+.dbaab-painting-panel-body {
+  position: relative;
+  padding: 0.8vw 0 0 2vw;
+}
+.dbaab-painting-title,
+.dbaab-painting-title + .dbaab-painting-artist {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+.dbaab-painting-title + .dbaab-painting-artist {
+  padding-left: 0.1em;
+  font-weight: 400;
+  color: #555;
+}
+.dbaab-painting-meta {
+  padding: 1.5em 0 0 0.1em;
+  color: #777;
+}
+.dbaab-painting-meta > div {
+  margin-top: 0.2em;
+}
+
+
+/***************************************/
+
+.navbar {
+  background-image: linear-gradient(to bottom, #992525 0, #711a1a 100%);
   margin-bottom: 0;
   border-radius: 0;
 }
 
-/* Set height of the grid so .sidenav can be 100% */
-.row.content
-{
-  height: 450px;
-}
-
-.sidenav
-{
+.sidenav {
   height: 100%;
   padding-top: 20px;
   background-color: #f1f1f1;
 }
 
-footer
-{
+/* Set height of the grid so .sidenav can be 100% */
+.row.content {
+  height: 450px;
+}
+
+footer {
   padding: 15px;
-  background-color: #900;
+  background-image: linear-gradient(to bottom, #992525 0, #711a1a 100%);
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px)
-{
-  .sidenav
-  {
+@media screen and (max-width: 767px) {
+  .sidenav {
     height: auto;
     padding: 15px;
   }
-  
-  .row.content
-  {
+  .row.content {
     height: auto;
   }
 }
