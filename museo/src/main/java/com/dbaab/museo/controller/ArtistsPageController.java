@@ -21,6 +21,6 @@ public class ArtistsPageController
     {
         List<Artist> listArtists = service.findAllOrderedByName();
         model.addAttribute("artistList", listArtists);
-        return "artistList";
+        return "artistsList";
     }
 }
