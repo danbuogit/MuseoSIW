@@ -1,108 +1,100 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Galleria</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" charset="ISO-8859-1"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-		
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<style>
-  		img {
-  			max-height : auto;
-  			max-width : 100%;
-  		}
-	    /* Remove the navbar's default margin-bottom and rounded borders */ 
-	    .navbar {
-	    	background-color: #990000;	
-	     	margin-bottom: 0;
-	      	border-radius: 0;
-	    }
-	    
-	    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-	    .row.content {height: 450px}
-	    
-	    /* Set gray background color and 100% height */
-	    .sidenav {
-	      	padding-top: 20px;
-	      	background-color: #f1f1f1;
-	      	height: 100%;
-	    }
-	    
-	    /* Set black background color, white text and some padding */
-	    footer {
-	      	background-color: #990000;      
-	      	padding: 15px;
-	    }
-	    
-	    /* On small screens, set height to 'auto' for sidenav and grid */
-	    @media screen and (max-width: 767px) {
-	    .sidenav {
-	        height: auto;
-	        padding: 15px;
-	      }
-	      .row.content {height:auto;} 
-	    }
-  	</style>
+  <title>Galleria</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  	<div class="container-fluid">
-    	<div class="navbar-header">
-      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>                        
-      		</button>
-      		<a class="navbar-brand" href="#">Logo</a>
-    	</div>
-    	<div class="collapse navbar-collapse" id="myNavbar">
-      		<ul class="nav navbar-nav">
-        		<li><a href="homeController">Home</a></li>
-        		<li class="active"><a href="galleryController?none">Galleria</a></li>
-        		<li><a href="artistController">Artisti</a></li>
-        		<li><a href="contacts">Contact</a></li>
-      		</ul>
-      		<ul class="nav navbar-nav navbar-right">
-      			<li class="dropdown"><!-- menu per ordinare i quadri -->
-          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordina per<span class="caret"></span></a>
-          			<ul class="dropdown-menu">
-          				<!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto è necessario per fornire la giusta intavolazione -->
-          				<li><a>Artista</a></li>
-          				<li role="separator" class="divider"></li>
-            			<li><a href="galleryController?artistName">+Artista: nome</a></li>
-            			<li><a href="galleryController?artistSurname">+Artista: cognome</a></li>
-            			<li role="separator" class="divider"></li>
-           	 			<li><a href="galleryController?title">Titolo</a></li>
-            			<li><a href="galleryController?year">Anno</a></li>
-          			</ul>
-          		</li>
-        		<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      		</ul>
-      		<!-- barra di ricerca, bisogna impostare l'action-->
-      		<form class="navbar-form navbar-right" action="#" method="post">
-        		<div class="form-group">
-          			<input type="text" class="form-control" placeholder="Search"/>
-        		</div>
-        		<button type="submit" class="btn btn-default">Cerca</button>
-      		</form>
-    	</div>
-  	</div>
-</nav>
-<div class="container-fluid text-center">    
-  	<div class="row content">
-    	<div class="col-sm-8 text-left">
-    		<hr/>
-    		<div th:if="${paintingList != null}">
-    			<div th:each="painting : ${paintingList}">
-    				<div class="container-fluif text-left">
-    					<img th:src="${painting.url}"/>
-    					<p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ' - ' + ${painting.title} + ', ' + ${painting.year}"></p>
-    				</div>
-    			</div>
-    		</div>	
-    	</div>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Logo</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="homeController">Home</a></li>
+          <li class="active"><a href="galleryController?none">Galleria</a></li>
+          <li><a href="artistController">Artisti</a></li>
+          <li><a href="contacts">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <!-- menu per ordinare i quadri --> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordina per<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto è necessario per fornire la giusta intavolazione <== CAZZATA! :) -->
+              <li><a>Artista</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="galleryController?artistName">+Artista: nome</a></li>
+              <li><a href="galleryController?artistSurname">+Artista: cognome</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="galleryController?title">Titolo</a></li>
+              <li><a href="galleryController?year">Anno</a></li>
+            </ul>
+          </li>
+          <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+        <!-- barra di ricerca, bisogna impostare l'action-->
+        <form class="navbar-form navbar-right" action="#" method="post">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" />
+          </div>
+          <button type="submit" class="btn btn-default">Cerca</button>
+        </form>
+      </div>
     </div>
-</div>
+  </nav>
+  <div class="container dbaab-container">
+    <div id="main-content">
+      <a sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}"
+         role="button" class="btn btn-default dbaab-adm-cmd-btn" th:href="@{/admins/painting/add}">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span>Aggiungi</span>
+      </a>
+      <div th:if="${paintingList}" th:each="painting : ${paintingList}" class="panel panel-default dbaab-painting-panel">
+        <div class="panel-body">
+          <div class="media" th:object="${painting}">
+            <div class="media-left dbaab-painting-panel-img">
+              <a href="#"><img class="media-object" th:src="*{url}" /></a>
+            </div>
+            <div class="media-body dbaab-painting-panel-body">
+              <div>
+                <h2 class="dbaab-painting-title" th:text="*{title}"></h2>
+                <h4 class="dbaab-painting-artist" th:text="*{artist.name + ' ' + artist.surname}"></h4>
+                <div class="dbaab-painting-meta">
+                  <div>Data: <span th:text="*{year}"></span></div>
+                  <div>Tecnica: <span th:text="*{technique}"></span></div>
+                  <div>Dimensioni: <span th:text="*{dimensions}"></span></div>
+                </div>
+              </div>
+              
+              <!--/* ADMIN */-->
+              <div class="dbaab-painting-panel-footer">
+                <div class="dbaab-adm-painting-controls" sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}">
+                  <a role="button" class="btn btn-sm btn-default dbaab-adm-cmd-btn" th:href="@{/admins/painting/modify(id=*{id})}">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    <span>Modifica</span>
+                  </a>
+                  <a role="button" class="btn btn-sm btn-default dbaab-adm-cmd-btn" th:href="@{/admins/painting/remove(id=*{id})}">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span>Rimuovi</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--/*panel*/-->
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dbaab.museo.model.Painting;
@@ -21,15 +18,9 @@ public class GalleryController
     private PaintingService service;
 
     @GetMapping("/galleryController")
-    public String getFirstTenPictures(Model model, @RequestParam(value = "order", required = false) String order)
+    public String showFirst10Paintings(Model model, @RequestParam(value = "order", required = false, defaultValue = "") String order)
     {
-        List<Painting> paintingList;
-
-        if (order == null || order.equals("none"))
-            paintingList = service.findFirstTen();
-        else
-            paintingList = service.findFirstTenOrderedBy(order);
-
+        List<Painting> paintingList = this.service.findFirst10OrderedBy(order);
         model.addAttribute("paintingList", paintingList);
 
         return "gallery";
