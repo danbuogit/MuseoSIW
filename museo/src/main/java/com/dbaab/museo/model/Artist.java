@@ -49,6 +49,12 @@ public class Artist
     {
         this.paintings = new ArrayList<Painting>();
     }
+    
+    @Override
+    public String toString()
+    {
+        return String.format("%s %s", this.name, this.surname);
+    }
 
     // GET & SET
 

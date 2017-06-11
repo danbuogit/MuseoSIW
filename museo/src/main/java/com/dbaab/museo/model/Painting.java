@@ -16,6 +16,7 @@ public class Painting
     private String title;
 
     @NotNull
+    @Min(0)
     private Integer year;
 
     @NotEmpty
@@ -34,6 +35,12 @@ public class Painting
 
     public Painting()
     {}
+    
+    @Override
+    public String toString()
+    {
+        return String.format("[%s] \"%s\" (%s), %s, %s; technique: %s", (this.id == null ? "null" : this.id), this.title, this.artist.toString(), this.dimensions, this.year, this.technique);
+    }
 
     // GET & SET
     
