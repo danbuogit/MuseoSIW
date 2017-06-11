@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${'&ldquo;' + painting.title + '&ldquo; by ' + painting.artist.toString()}">Modify painting's info</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}"/>
+  <link rel="stylesheet" href="/css/forms.css" th:href="@{/css/forms.css}"/>
+</head>
+<body>
+  <div class="container">
+    <div id="main-content">
+      <div class="panel panel-default dbaab-form-painting">
+        <div class="panel-body">
+          <form class="form-horizontal" action="#" th:action="@{/painting/modify}" th:object="${painting}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <!--/* TITLE */-->
+            <div class="col-sm-12">
+              <div id="dbaab-form-painting-title" class="form-group" th:classappend="${#fields.hasErrors('title')} ? has-error">
+                <label class="col-sm-1 control-label" th:for="${#ids.next('title')}" th:text="Titolo">Title</label>
+                <div class="col-sm-11">
+                  <input type="text" class="form-control" th:field="*{title}" th:placeholder="Titolo" placeholder="Title" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!--/* LEFT BLOCK */--> 
+            <div class="col-sm-8">
+              <!--/* ARTIST */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('artist')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('artist')}" th:text="Artista">Artist</label>
+                <div class="col-sm-10">
+                  <select class="form-control" th:field="*{artist}" required="required">
+                    <option th:each="artist : ${artists}" th:value="${artist.id}" th:text="${artist}">???</option>
+                  </select>
+                  <span class="help-block" th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}"></span>
+                </div>
+              </div>
+
+              <!--/* TECHNIQUE */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('tecnique')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('tecnique')}" th:text="Tecnica">Technique</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" th:field="*{tecnique}" th:placeholder="Tecnica" placeholder="Technique" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('tecnique')}" th:errors="*{tecnique}"></span>
+                </div>
+              </div>
+
+              <!--/* DIMENSIONS */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('dimensions')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('dimensions')}" th:text="Dimensioni">Dimensions</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" th:field="*{dimensions}" th:placeholder="Dimensioni" placeholder="Dimensions" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('dimensions')}" th:errors="*{dimensions}"></span>
+                </div>
+              </div>
+
+              <!--/* YEAR */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('year')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('year')}" th:text="Anno">Year</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="number" th:field="*{year}" th:placeholder="Anno" placeholder="Year" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+                </div>
+              </div>
+              
+              <!--/* URL */-->
+              <div id="dbaab-form-painting-url" class="form-group" th:classappend="${#fields.hasErrors('url')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('url')}" th:text="URL">URL</label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+                    <input class="form-control" type="url" th:field="*{url}" th:placeholder="URL" placeholder="URL"/>
+                    <span class="input-group-btn" onclick="updatePaintingPreview()">
+                      <button class="btn btn-default" type="button">Preview</button>
+                    </span>
+                  </div>
+                  <span class="help-block" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+                </div>
+              </div>
+
+              <!--/* SUBMIT BTN */-->
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button class="btn btn-default" type="submit" th:text="Submit">Submit</button>
+                </div>
+              </div>
+            </div>
+            
+            <!--/* THUMBNAIL PREVIEW */-->
+            <div class="col-sm-4">
+              <img id="dbaab-form-painting-preview" class="img-thumbnail" th:src="*{url}"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/js/forms.js" th:src="@{/js/forms.js}"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

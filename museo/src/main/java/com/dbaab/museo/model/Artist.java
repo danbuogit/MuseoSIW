@@ -33,6 +33,12 @@ public class Artist
 
     public Artist()
     {}
+    
+    @Override
+    public String toString()
+    {
+        return String.format("%s %s", this.name, this.surname);
+    }
 
     // GET & SET
     

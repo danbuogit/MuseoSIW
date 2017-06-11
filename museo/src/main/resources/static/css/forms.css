@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+/*––––––––––––––––––––––*
+ |  [/painting/modify]  |
+ *––––––––––––––––––––––*/
+ 
+.dbaab-form-painting {
+  margin: 10px 30px;
+  box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+  #dbaab-form-painting-title > label {
+    width: 11.11111111%;
+  }
+  #dbaab-form-painting-title > div {
+    width: 88.88888889%;
+  }
+}

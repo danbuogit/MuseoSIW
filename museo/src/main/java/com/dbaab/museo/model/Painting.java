@@ -8,12 +8,13 @@ public class Painting
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotNull
     private String title;
 
     @NotNull
+    @Min(0)
     private Integer year;
 
     @NotNull
@@ -32,15 +33,21 @@ public class Painting
 
     public Painting()
     {}
+    
+    @Override
+    public String toString()
+    {
+        return String.format("[%s] \"%s\" (%s), %s, %s; technique: %s", (this.id == null ? "null" : this.id), this.title, this.artist.toString(), this.dimensions, this.year, this.tecnique);
+    }
 
     // GET & SET
     
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }
