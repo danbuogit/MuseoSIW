@@ -16,6 +16,7 @@
         <div class="panel-body">
           <form class="form-horizontal" action="#" th:action="@{/painting/modify}" th:object="${painting}" method="post">
             <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" id="ref" name="ref" th:value="${ref}"/>
             <!--/* TITLE */-->
             <div class="col-sm-12">
               <div id="dbaab-form-painting-title" class="form-group" th:classappend="${#fields.hasErrors('title')} ? has-error">
