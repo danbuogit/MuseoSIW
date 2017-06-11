@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Painting</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+ <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Logo</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="homeController">Home</a></li>
+          <li><a href="galleryController">Galleria</a></li>
+          <li><a href="artistController">Artisti</a></li>
+          <li><a href="contacts">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fuild text-center">
+    <h3>Prego, inserire le nuove informazioni sul dipinto.</h3>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form action="#" th:action="@{/addPaintingController}" th:object="${painting}" method="post">
+        <!-- information management -->
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" th:field="*{title}" class="form-control input-lg" placeholder="Title" required="required" autofocus="autofocus"/>
+            </div>
+            <div class="form-group">
+                <label for="dimensions">Dimension</label>
+                <input type="text" th:field="*{dimensions}" class="form-control input-lg" placeholder="Dimensions, i.e. number x number" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="tecnique">Tecnique</label>  
+                <input type="text" th:field="*{tecnique}" class="form-control input-lg" placeholder="Tecnique" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>   
+                <input type="text" th:field="*{url}" class="form-control input-lg" placeholder="url of the image" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>   
+                <input type="number" th:field="*{year}" class="form-control input-lg" placeholder="Year, i.e. 1581, 2012..." required="required"/>
+                <span th:if="${errorYear!=null}" th:text="${errorYear}"></span>
+            </div>
+            <div class="form-group">
+                <label class="mr-sm-2" for="artistSelection">Artist</label>
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="artistSelection" th:field="*{artist}">
+                    <option th:each="artist : ${artistList}" th:value="${artist.id}" th:text="${artist.name} + ' ' + ${artist.surname}"/>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Add new painting"/>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+  
+</body>
+</html>
