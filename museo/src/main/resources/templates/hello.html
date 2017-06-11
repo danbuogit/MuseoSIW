@@ -7,13 +7,11 @@
 </head>
 <body>
   <div class="container-fluid">
+    <div th:replace="fragments/navbar :: nav"></div>
     <h2>Hello <strong sec:authentication="principal.username"><i>Anonymous</i></strong>!</h2>
     <p sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}">
       You are authenticated as <i><span sec:authentication="principal.authorities"></span></i>.
     </p>
-    <form th:action="@{/logout}" method="post">
-      <input type="submit" value="Sign Out" />
-    </form>
   </div>
   <object th:replace="fragments/head :: js"></object>
 </body>
