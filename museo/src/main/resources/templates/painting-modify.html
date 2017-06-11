@@ -14,7 +14,7 @@
     <div id="main-content">
       <div class="panel panel-default dbaab-form-painting">
         <div class="panel-body">
-          <form class="form-horizontal" action="#" th:action="@{/painting/modify}" th:object="${painting}" method="post">
+          <form class="form-horizontal" action="#" th:action="@{/admins/painting/modify}" th:object="${painting}" method="post">
             <input type="hidden" th:field="*{id}"/>
             <input type="hidden" id="ref" name="ref" th:value="${ref}"/>
             <!--/* TITLE */-->
