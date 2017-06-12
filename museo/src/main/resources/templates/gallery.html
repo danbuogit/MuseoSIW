@@ -6,54 +6,32 @@
   <meta th:replace="fragments/head :: head"/>
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Logo</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="homeController">Home</a></li>
-          <li class="active"><a href="galleryController?none">Galleria</a></li>
-          <li><a href="artistController">Artisti</a></li>
-          <li><a href="contacts">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <!-- menu per ordinare i quadri --> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordina per<span class="caret"></span></a>
+  <nav th:replace="fragments/navbar :: nav"></nav>
+  <div class="container dbaab-container">
+    <div id="main-content">
+      <div id="dbaab-main-content-header">
+        <div class="col-sm-8">
+          <a sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}"
+             role="button" class="btn btn-default dbaab-adm-cmd-btn" th:href="@{/admins/painting/add}">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <span>Aggiungi</span>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <div id="dbaab-gallery-orderby-dropdown" class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Ordina per</span> <span class="caret"></span>
+            </button>
             <ul class="dropdown-menu">
-              <!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto è necessario per fornire la giusta intavolazione <== CAZZATA! :) -->
-              <li><a>Artista</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="galleryController?artistName">+Artista: nome</a></li>
-              <li><a href="galleryController?artistSurname">+Artista: cognome</a></li>
+              <li><a href="#">Artista (nome)</a></li>
+              <li><a href="#">Artista (cognome)</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="galleryController?title">Titolo</a></li>
               <li><a href="galleryController?year">Anno</a></li>
             </ul>
-          </li>
-          <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-        <!-- barra di ricerca, bisogna impostare l'action-->
-        <form class="navbar-form navbar-right" action="#" method="post">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" />
           </div>
-          <button type="submit" class="btn btn-default">Cerca</button>
-        </form>
+        </div>
       </div>
-    </div>
-  </nav>
-  <div class="container dbaab-container">
-    <div id="main-content">
-      <a sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}"
-         role="button" class="btn btn-default dbaab-adm-cmd-btn" th:href="@{/admins/painting/add}">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        <span>Aggiungi</span>
-      </a>
       <div th:if="${paintingList}" th:each="painting : ${paintingList}" class="panel panel-default dbaab-painting-panel">
         <div class="panel-body">
           <div class="media" th:object="${painting}">
