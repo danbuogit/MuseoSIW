@@ -124,16 +124,16 @@ body {
   padding: 0.8vw;
 }
 
-.dbaab-painting-panel-img {
+.dbaab-painting-panel > .panel-body .media-left {
   padding: 0px;
 }
 
-.dbaab-painting-panel-img img {
+.dbaab-painting-panel > .panel-body .media-left img {
   max-width: 15vw;
   padding: 5px;
 }
 
-.dbaab-painting-panel-body {
+.dbaab-painting-panel > .panel-body .media-body {
   position: relative;
   padding: 0.8vw 0 0 2vw;
 }
@@ -156,14 +156,9 @@ body {
   margin-top: 0.2em;
 }
 
-.dbaab-painting-panel-footer {
-  display: inline-block;
-  padding-left: 2vw;
-  padding-bottom: 5px;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
+.dbaab-painting-panel > .panel-footer { 
+  text-align: right;
+  padding: 8px 0.8vw;
 }
 
 /* [admin] */
@@ -176,8 +171,8 @@ body {
   text-shadow: 1px 1px 2px;
 }
 
-.dbaab-painting-panel-footer > .dbaab-adm-painting-controls {
-  float: right;
+.dbaab-adm-painting-controls { 
+  display: inline-block;
 }
 .dbaab-adm-painting-controls > .dbaab-adm-cmd-btn {
   margin: 0 0 0 0.5vw;
