@@ -12,17 +12,23 @@ import com.dbaab.museo.model.Painting;
 import com.dbaab.museo.service.PaintingService;
 
 @Controller
-public class HomeController {
-	
-	@Autowired
-	PaintingService service;
-	
-	@GetMapping("/homeController")
-	public String getMostRecentPainting(Model model){
-		
-		List<Painting> listOfThreePainting = service.findFirst3();
-		model.addAttribute("listOfThreePainting", listOfThreePainting);
-		
-		return "home";
-	}
+public class HomeController
+{
+    @Autowired
+    private PaintingService service;
+
+    @GetMapping("/")
+    public String root()
+    {
+        return "redirect:home";
+    }
+
+    @GetMapping(value = { "/home", "/homeController" })
+    public String getMostRecentPainting(Model model)
+    {
+        List<Painting> listOfThreePainting = service.findFirst3();
+        model.addAttribute("listOfThreePainting", listOfThreePainting);
+
+        return "home";
+    }
 }
