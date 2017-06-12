@@ -23,12 +23,12 @@
               <span>Ordina per</span> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a th:href="@{/galleryController(order=artistName)}">Artista (nome)</a></li>
-              <li><a th:href="@{/galleryController(order=artistSurname)}">Artista (cognome)</a></li>
+              <li><a th:href="@{/gallery(order=artistName)}">Artista (nome)</a></li>
+              <li><a th:href="@{/gallery(order=artistSurname)}">Artista (cognome)</a></li>
               <li role="separator" class="divider"></li>
-              <li><a th:href="@{/galleryController(order=title)}">Titolo</a></li>
-              <li><a th:href="@{/galleryController(order=yearAsc)}">Meno recente</a></li>
-              <li><a th:href="@{/galleryController(order=yearDesc)}">Più recente</a></li>
+              <li><a th:href="@{/gallery(order=title)}">Titolo</a></li>
+              <li><a th:href="@{/gallery(order=yearAsc)}">Meno recente</a></li>
+              <li><a th:href="@{/gallery(order=yearDesc)}">Più recente</a></li>
             </ul>
           </div>
         </div>

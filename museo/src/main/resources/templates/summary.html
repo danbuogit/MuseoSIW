@@ -11,7 +11,7 @@
         <img alt="https://a.disquscdn.com/uploads/mediaembed/images/354/3586/original.jpg" th:src="${painting.url}"/>
         <p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ', ' + ${painting.title} + ' - ' + ${painting.year} + ' (' + ${painting.technique} + ', ' + ${painting.dimensions} + ')'"/>     
         <hr/>
-        <h4 th:unless="${isRemoving}"><a href="/galleryController" class="btn btn-default" role="button">Back</a></h4>
+        <h4 th:unless="${isRemoving}"><a href="/gallery" class="btn btn-default" role="button">Back</a></h4>
         <div th:if="${isRemoving}">
             <h4>Are you sure you want to remove this painting?</h4>
             <div>

@@ -20,15 +20,14 @@ public class HomeController
     @GetMapping("/")
     public String root()
     {
-        return "redirect:home";
+        return "redirect:/home";
     }
 
-    @GetMapping(value = { "/home", "/homeController" })
+    @GetMapping("/home")
     public String getMostRecentPainting(Model model)
     {
         List<Painting> listOfThreePainting = service.findFirst3();
         model.addAttribute("listOfThreePainting", listOfThreePainting);
-
         return "home";
     }
 }

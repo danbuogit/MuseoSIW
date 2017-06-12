@@ -4,7 +4,7 @@ import java.net.URI;
 
 public final class RequestHelper
 {
-    public static String getTemplateFromUrl(String url)
+    public static String getControllerFromUrl(String url)
     {
         String template = null;
         try

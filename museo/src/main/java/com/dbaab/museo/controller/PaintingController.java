@@ -86,7 +86,7 @@ public class PaintingController
 
         List<Artist> artists = artistService.findAllOrderedByName();
 
-        model.addAttribute("ref", referer != null ? referer : "/galleryController");
+        model.addAttribute("ref", referer != null ? referer : "/gallery");
         model.addAttribute("painting", painting);
         model.addAttribute("artists", artists);
         return "painting-modify";
@@ -108,7 +108,7 @@ public class PaintingController
 
         paintingService.save(painting);
 
-        String redirect = String.format("redirect:%s", RequestHelper.getTemplateFromUrl(referer));
+        String redirect = String.format("redirect:%s", RequestHelper.getControllerFromUrl(referer));
         return redirect;
     }
 }
