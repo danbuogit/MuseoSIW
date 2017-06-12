@@ -55,7 +55,7 @@
     	<div class="collapse navbar-collapse" id="myNavbar">
       		<ul class="nav navbar-nav">
         		<li><a href="homeController">Home</a></li>
-        		<li><a href="galleryController?none">Galleria</a></li>
+        		<li><a href="galleryController">Galleria</a></li>
         		<li class="active"><a href="artistController">Artisti</a></li>
         		<li><a href="contacts">Contact</a></li>
       		</ul>
@@ -69,18 +69,21 @@
   	<div class="row content">
     	<div class="col-sm-8 text-right">
     		<div>    			
-    			<!-- barra di ricerca, bisogna impostare l'action-->
-      			<form class="navbar-form navbar-right" action="#" method="post">
-        			<div class="form-group">
-          				<input type="text" class="form-control" placeholder="Ricerca per nome">
-        			</div>
-        			<button type="submit" class="btn btn-default">Cerca</button>
+    		  <hr/>
+    	       <!-- barra di ricerca, bisogna impostare l'action-->
+      		    <form class="navbar-form navbar-right" action="#" method="post">
+        	       <div class="form-group">
+          				<input type="text" class="form-control" placeholder="Ricerca per nome"/>
+        		   </div>
+        		   <button type="submit" class="btn btn-default">Cerca</button>
       			</form>
-      		<div class="col-sm-8 text-left">
-      			<div th:each="artist : ${artistList}">
-					<p th:text="${artist.name} + '' + ${artist.surname}"/>     				
-      			</div>
-      		</div>
+      		    <div class="col-sm-8 text-left">
+      		    <ul>
+      		        <li th:each="artist : ${artistList}">
+					   <a th:href="@{/artistDetailsController(painter=${artist.id})}" th:text="${artist.name} + ' ' + ${artist.surname}"></a>
+      			   </li>
+      			</ul>
+      		    </div>
     		</div>
     	</div>
     </div>

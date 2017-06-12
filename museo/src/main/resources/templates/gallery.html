@@ -10,45 +10,48 @@
   <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Logo</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="homeController">Home</a></li>
-          <li class="active"><a href="galleryController?none">Galleria</a></li>
-          <li><a href="artistController">Artisti</a></li>
-          <li><a href="contacts">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <!-- menu per ordinare i quadri --> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordina per<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto è necessario per fornire la giusta intavolazione <== CAZZATA! :) -->
-              <li><a>Artista</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="galleryController?artistName">+Artista: nome</a></li>
-              <li><a href="galleryController?artistSurname">+Artista: cognome</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="galleryController?title">Titolo</a></li>
-              <li><a href="galleryController?year">Anno</a></li>
-            </ul>
-          </li>
-          <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-        <!-- barra di ricerca, bisogna impostare l'action-->
-        <form class="navbar-form navbar-right" action="#" method="post">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" />
-          </div>
-          <button type="submit" class="btn btn-default">Cerca</button>
-        </form>
-      </div>
+<nav class="navbar navbar-inverse">
+  	<div class="container-fluid">
+    	<div class="navbar-header">
+      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>                        
+      		</button>
+      		<a class="navbar-brand" href="#">Logo</a>
+    	</div>
+    	<div class="collapse navbar-collapse" id="myNavbar">
+      		<ul class="nav navbar-nav">
+        		<li><a href="homeController">Home</a></li>
+        		<li class="active"><a href="galleryController?none">Galleria</a></li>
+        		<li><a href="artistController">Artisti</a></li>
+        		<li><a href="contacts">Contact</a></li>
+      		</ul>
+      		<ul class="nav navbar-nav navbar-right">
+      			<li class="dropdown"><!-- menu per ordinare i quadri -->
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordina per<span class="caret"></span></a>
+          			<ul class="dropdown-menu">
+          				<!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto è necessario per fornire la giusta intavolazione -->
+          				<li><a>Artista</a></li>
+          				<li role="separator" class="divider"></li>
+            			<li><a href="galleryController?order=artistName">+Artista: nome</a></li>
+            			<li><a href="galleryController?order=artistSurname">+Artista: cognome</a></li>
+            			<li role="separator" class="divider"></li>
+           	 			<li><a href="galleryController?order=title">Titolo</a></li>
+            			<li><a href="galleryController?order=yearAsc">Meno recente</a></li>
+            			<li><a href="galleryController?order=yearDesc">Pi� recente</a></li>
+          			</ul>
+          		</li>
+        		<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      		</ul>
+      		<!-- barra di ricerca, bisogna impostare l'action-->
+      		<form class="navbar-form navbar-right" action="#" method="post">
+        		<div class="form-group">
+          			<input type="text" class="form-control" placeholder="Search"/>
+        		</div>
+        		<button type="submit" class="btn btn-default">Cerca</button>
+      		</form>
+    	</div>
     </div>
   </nav>
   <div class="container dbaab-container">
