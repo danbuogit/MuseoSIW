@@ -28,7 +28,7 @@
           <li><a href="#contacts" th:href="@{/contacts}">Contacts</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li th:replace="fragments/navbar-right_auth :: ${#authentication.authenticated} ? 'authenticated' : 'anonymous'"></li>
+          <li th:replace="fragments/navbar-right_auth :: ${#authorization.expression('isAuthenticated()')} ? 'authenticated' : 'anonymous'"></li>
         </ul>
       </div>
     </div>
