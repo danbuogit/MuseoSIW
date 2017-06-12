@@ -1,26 +1,122 @@
 @CHARSET "UTF-8";
 
-/*********************************
+/***********************************************************************
  * base-color: #992525
- *********************************/
+ * navbar gradient: linear-gradient(to bottom, #992525 0, #711a1a 100%)
+ ***********************************************************************/
 
-.dbaab-container {
-  box-shadow: 0px 0px 8px 0px;
+body {
+  padding-top: 51px;
 }
-@media screen and (min-width: 767px){
+
+@media screen and (min-width: 767px) {
   .dbaab-container {
+    box-shadow: 0px 0px 8px 0px;
     width: 70%;
   }
 }
 
 #main-content {
-  padding: 30px 15px;
+  padding: 20px 15px;
+}
+
+
+/*—————————————————*
+ |     NAVBAR      |
+ *—————————————————*/
+@media screen and (min-width: 767px) {
+  .dbaab-navbar-container {
+    width: 72%;
+  }
+}
+
+/* Navbar items */
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+  color: hsl(56, 20%, 85%);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Navbar items :hover & :focus/.open */
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  color: hsl(56, 25%, 90%);
+  text-shadow: 0 -1px 5px hsla(55, 40%, 65%, 0.60);
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > .dropdown.dbaab-navbar-auth-dropdown.open > a {
+  /* This style has been adapted from the style applied to '.navbar-nav > .open > a' by bootstrap */
+  background-image: -webkit-linear-gradient(top, #992525 0, #711a1a 100%);
+  background-image: -o-linear-gradient(top, #992525 0, #711a1a 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#992525), to(#711a1a));
+  background-image: linear-gradient(to bottom, #992525 0, #711a1a 100%);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
+
+  color: hsl(56, 25%, 90%);
+  text-shadow: 0 -1px 1px hsla(55, 10%, 50%, 0.5);
+}
+.navbar-inverse .navbar-nav > .dropdown.dbaab-navbar-auth-dropdown.open > a {
+  color: hsl(56, 25%, 95%);
+}
+
+/* Dropdown Menu toggle */
+.navbar-nav > .dbaab-navbar-auth-dropdown > .dropdown-toggle > .glyphicon-user {
+  margin-right: 0.5rem;
+}
+.navbar-nav > .dbaab-navbar-auth-dropdown > .dropdown-toggle > .caret {
+  margin-left: 1rem;
+}
+.navbar-nav > .dropdown.dbaab-navbar-auth-dropdown.open > .dropdown-toggle > .caret {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu > 'Log Out' button */
+.dropdown-menu > li > form .dbaab-dropdown-form-btn {
+  /* This is the same style applied to '.dropdown-menu > li > a' by bootstrap. */
+  display: block;
+  width: 100%;
+  text-align: left;
+  clear: both;
+  padding: 3px 20px;
+  border: 0;
+  outline: 0;
+  color: #333;
+  background: none;
+  font-weight: 400;
+  line-height: 1.42857143;
+  white-space: nowrap;
+}
+.dropdown-menu > li > form .dbaab-dropdown-form-btn > .glyphicon-log-out {
+  padding-right: 1rem;
+}
+.dropdown-menu > li > form .dbaab-dropdown-form-btn:hover,
+.dropdown-menu > li > form .dbaab-dropdown-form-btn:focus {
+  /* This is the same style applied to '.dropdown-menu > li > a' by bootstrap. */
+  text-decoration: none;
+  color: #262626;
+  background-image: linear-gradient(#f5f5f5 0px, #e8e8e8 100%);
 }
 
 
 /*—————————————————*
  |     GALLERY     |
  *—————————————————*/
+#dbaab-main-content-header {
+  display: table;
+  width: 100%;
+}
+#dbaab-main-content-header > * {
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
+}
+#dbaab-main-content-header #dbaab-gallery-orderby-dropdown {
+  float: right;
+}
+
 .dbaab-painting-panel {
   margin: 1vw 0;
 }
@@ -63,6 +159,7 @@
 .dbaab-painting-panel-footer {
   display: inline-block;
   padding-left: 2vw;
+  padding-bottom: 5px;
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -91,6 +188,7 @@
 
 .navbar {
   background-image: linear-gradient(to bottom, #992525 0, #711a1a 100%);
+  box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
   margin-bottom: 0;
   border-radius: 0;
 }

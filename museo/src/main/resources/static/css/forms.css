@@ -3,6 +3,10 @@
 /*––––––––––––––––––––––*
  |  [/painting/modify]  |
  *––––––––––––––––––––––*/
+
+body {
+  padding-top: 0px;
+}
  
 .dbaab-form-painting {
   margin: 10px 30px;

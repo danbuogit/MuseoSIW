@@ -3,64 +3,36 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <title>Galleria</title>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="css/main.css"/>
+  <meta th:replace="fragments/head :: head"/>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  	<div class="container-fluid">
-    	<div class="navbar-header">
-      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>                        
-      		</button>
-      		<a class="navbar-brand" href="#">Logo</a>
-    	</div>
-    	<div class="collapse navbar-collapse" id="myNavbar">
-      		<ul class="nav navbar-nav">
-        		<li><a href="homeController">Home</a></li>
-        		<li class="active"><a href="galleryController?none">Galleria</a></li>
-        		<li><a href="artistController">Artisti</a></li>
-        		<li><a href="contacts">Contact</a></li>
-      		</ul>
-      		<ul class="nav navbar-nav navbar-right">
-      			<li class="dropdown"><!-- menu per ordinare i quadri -->
-          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordina per<span class="caret"></span></a>
-          			<ul class="dropdown-menu">
-          				<!-- lasciare le intestazioni del tipo <a> ad Autore, in quanto è necessario per fornire la giusta intavolazione -->
-          				<li><a>Artista</a></li>
-          				<li role="separator" class="divider"></li>
-            			<li><a href="galleryController?order=artistName">+Artista: nome</a></li>
-            			<li><a href="galleryController?order=artistSurname">+Artista: cognome</a></li>
-            			<li role="separator" class="divider"></li>
-           	 			<li><a href="galleryController?order=title">Titolo</a></li>
-            			<li><a href="galleryController?order=yearAsc">Meno recente</a></li>
-            			<li><a href="galleryController?order=yearDesc">Pi� recente</a></li>
-          			</ul>
-          		</li>
-        		<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      		</ul>
-      		<!-- barra di ricerca, bisogna impostare l'action-->
-      		<form class="navbar-form navbar-right" action="#" method="post">
-        		<div class="form-group">
-          			<input type="text" class="form-control" placeholder="Search"/>
-        		</div>
-        		<button type="submit" class="btn btn-default">Cerca</button>
-      		</form>
-    	</div>
-    </div>
-  </nav>
+  <nav th:replace="fragments/navbar :: nav"></nav>
   <div class="container dbaab-container">
     <div id="main-content">
-      <a sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}"
-         role="button" class="btn btn-default dbaab-adm-cmd-btn" th:href="@{/admins/painting/add}">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        <span>Aggiungi</span>
-      </a>
+      <div id="dbaab-main-content-header">
+        <div class="col-sm-8">
+          <a sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}"
+             role="button" class="btn btn-default dbaab-adm-cmd-btn" th:href="@{/admins/painting/add}">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <span>Aggiungi</span>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <div id="dbaab-gallery-orderby-dropdown" class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Ordina per</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a th:href="@{/galleryController(order=artistName)}">Artista (nome)</a></li>
+              <li><a th:href="@{/galleryController(order=artistSurname)}">Artista (cognome)</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a th:href="@{/galleryController(order=title)}">Titolo</a></li>
+              <li><a th:href="@{/galleryController(order=yearAsc)}">Meno recente</a></li>
+              <li><a th:href="@{/galleryController(order=yearDesc)}">Più recente</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div th:if="${paintingList}" th:each="painting : ${paintingList}" class="panel panel-default dbaab-painting-panel">
         <div class="panel-body">
           <div class="media" th:object="${painting}">
@@ -97,7 +69,6 @@
       </div><!--/*panel*/-->
     </div>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <object th:replace="fragments/head :: js"></object>
 </body>
 </html>
