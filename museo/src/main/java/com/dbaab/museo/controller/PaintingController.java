@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestHeader;
 
+import com.dbaab.museo.helpers.RequestHelper;
 import com.dbaab.museo.model.Artist;
 import com.dbaab.museo.model.Painting;
 import com.dbaab.museo.service.ArtistService;
@@ -25,15 +27,15 @@ import com.dbaab.museo.service.PaintingService;
 public class PaintingController {
 	
 	@Autowired
-	PaintingService serviceP;
+	PaintingService paintingService;
 	
 	@Autowired
-	ArtistService serviceA;
+	ArtistService artistService;
 	
 	@GetMapping("/admins/painting/add")
 	public String retrieveArtistsInfo(Model model)
 	{
-		List<Artist> artistList = serviceA.findAllOrderedByName();
+		List<Artist> artistList = artistService.findAllOrderedByName();
 		model.addAttribute("artistList", artistList);
 		model.addAttribute("painting", new Painting());
 		return "addPaintingForm";
@@ -51,7 +53,7 @@ public class PaintingController {
 		else{
 			model.addAttribute("painting", painting);
 			model.addAttribute("isRemoving", false);
-			serviceP.save(painting);
+			paintingService.save(painting);
 		}
 		return "summary";
 	}
@@ -71,7 +73,7 @@ public class PaintingController {
 	public String showInfoPainting(Model model,
 			@RequestParam(value="id", required=true) Long id)
 	{
-		Painting painting = serviceP.findById(id);
+		Painting painting = paintingService.findById(id);
 		model.addAttribute("painting", painting);
 		model.addAttribute("isRemoving", true);
 		return "summary";
@@ -84,7 +86,7 @@ public class PaintingController {
 	{
 		if(decision.equals("y"))
 		{
-			this.serviceP.delete(id);
+			this.paintingService.delete(id);
 			model.addAttribute("removed", true);
 		}
 		else
@@ -93,4 +95,42 @@ public class PaintingController {
 		return "redirectionPage";
 		
 	}
+  
+   @GetMapping("/admins/painting/modify")
+    public String showModifyForm(Model model,
+            @RequestParam(value = "id", required = true) Long id,
+            @RequestHeader(value = "referer", required = false) final String referer)
+    {
+        Painting painting = this.paintingService.findById(id);
+        if (painting == null)
+            return "error";
+
+        List<Artist> artists = artistService.findAllOrderedByName();
+
+        model.addAttribute("ref", referer != null ? referer : "/galleryController");
+        model.addAttribute("painting", painting);
+        model.addAttribute("artists", artists);
+        return "painting-modify";
+    }
+
+    @PostMapping("/admins/painting/modify")
+    public String modify(Model model,
+            @RequestParam(value = "ref", required = true) String referer,
+            @Valid @ModelAttribute("painting") Painting painting,
+            BindingResult bindingResult)
+    {
+
+        if (bindingResult.hasErrors())
+        {
+            List<Artist> artists = artistService.findAllOrderedByName();
+            model.addAttribute("ref", referer);
+            model.addAttribute("artists", artists);
+            return "painting-modify";
+        }
+
+        paintingService.save(painting);
+
+        String redirect = String.format("redirect:%s", RequestHelper.getTemplateFromUrl(referer));
+        return redirect;
+    }
 }

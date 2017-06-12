@@ -3,23 +3,26 @@ package com.dbaab.museo.model;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Painting
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @NotNull
+    @NotEmpty
     private String title;
 
     @NotNull
+    @Min(0)
     private Integer year;
 
-    @NotNull
-    private String tecnique;
+    @NotEmpty
+    private String technique;
 
-    @NotNull
+    @NotEmpty
     private String dimensions;
 
     @Size(max = 500)
@@ -32,15 +35,21 @@ public class Painting
 
     public Painting()
     {}
+    
+    @Override
+    public String toString()
+    {
+        return String.format("[%s] \"%s\" (%s), %s, %s; technique: %s", (this.id == null ? "null" : this.id), this.title, this.artist.toString(), this.dimensions, this.year, this.technique);
+    }
 
     // GET & SET
     
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }
@@ -65,14 +74,14 @@ public class Painting
         this.year = year;
     }
 
-    public String getTecnique()
+    public String getTechnique()
     {
-        return tecnique;
+        return technique;
     }
 
-    public void setTecnique(String tecnique)
+    public void setTechnique(String technique)
     {
-        this.tecnique = tecnique;
+        this.technique = technique;
     }
 
     public String getDimensions()

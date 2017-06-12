@@ -11,6 +11,8 @@ import com.dbaab.museo.model.Painting;
 public interface PaintingRepository extends CrudRepository<Painting, Long>
 {
     List<Painting> findAll();
+    List<Painting> findFirst3By();
+    List<Painting> findFirst10By();
     List<Painting> findFirst10ByOrderByTitle();
     List<Painting> findFirst10ByOrderByYearAsc();
     List<Painting> findFirst10ByOrderByYearDesc();

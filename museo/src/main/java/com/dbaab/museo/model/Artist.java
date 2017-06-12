@@ -1,30 +1,44 @@
 package com.dbaab.museo.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Artist
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
-    @NotNull
+    @NotEmpty
     private String surname;
 
-    @NotNull
+    @NotEmpty
     private String nation;
 
     @NotNull
+    @Temporal(TemporalType.DATE)
+    @Past
     private Date birthDate;
 
+    @Temporal(TemporalType.DATE)
+    @Past
     private Date deathDate;
 
     @NotNull
@@ -32,16 +46,24 @@ public class Artist
     private List<Painting> paintings;
 
     public Artist()
-    {}
+    {
+        this.paintings = new ArrayList<Painting>();
+    }
+    
+    @Override
+    public String toString()
+    {
+        return String.format("%s %s", this.name, this.surname);
+    }
 
     // GET & SET
-    
-    public long getId()
+
+    public Long getId()
     {
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }
