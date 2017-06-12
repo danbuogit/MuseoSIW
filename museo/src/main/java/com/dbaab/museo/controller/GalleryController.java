@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dbaab.museo.model.Painting;
@@ -28,9 +27,9 @@ public class GalleryController
         System.out.println(order);
         
         if (order == null || order.equals("none"))
-            paintingList = service.findFirstTen();
+            paintingList = service.findFirst10();
         else
-            paintingList = service.findFirstTenOrderedBy(order);
+            paintingList = service.findFirst10OrderedBy(order);
 
         model.addAttribute("paintingList", paintingList);
 
