@@ -13,7 +13,7 @@ import com.dbaab.museo.model.Painting;
 import com.dbaab.museo.service.PaintingService;
 
 @Controller
-@RequestMapping("/galleryController")
+@RequestMapping("/gallery")
 public class GalleryController
 {
     @Autowired

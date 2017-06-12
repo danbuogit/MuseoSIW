@@ -16,7 +16,7 @@ public class ArtistsPageController
     @Autowired
     private ArtistService service;
 
-    @GetMapping("/artistController")
+    @GetMapping("/artists")
     public String GetArtistList(Model model)
     {
         List<Artist> listArtists = service.findAllOrderedByName();

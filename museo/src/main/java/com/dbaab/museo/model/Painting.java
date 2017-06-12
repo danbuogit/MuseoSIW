@@ -5,6 +5,8 @@ import javax.validation.constraints.*;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.dbaab.museo.validation.annotations.PastYear;
+
 @Entity
 public class Painting
 {
@@ -16,6 +18,7 @@ public class Painting
     private String title;
 
     @NotNull
+    @PastYear(pastOrPresent = true)
     private Integer year;
 
     @NotEmpty

@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Summary</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+  <title>Summary</title>
+  <meta th:replace="fragments/head :: head"/>
 </head>
 <body>
     <div class="container-fluid text-center">
@@ -15,7 +11,7 @@
         <img alt="https://a.disquscdn.com/uploads/mediaembed/images/354/3586/original.jpg" th:src="${painting.url}"/>
         <p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ', ' + ${painting.title} + ' - ' + ${painting.year} + ' (' + ${painting.technique} + ', ' + ${painting.dimensions} + ')'"/>     
         <hr/>
-        <h4 th:unless="${isRemoving}"><a href="/galleryController" class="btn btn-default" role="button">Back</a></h4>
+        <h4 th:unless="${isRemoving}"><a href="/gallery" class="btn btn-default" role="button">Back</a></h4>
         <div th:if="${isRemoving}">
             <h4>Are you sure you want to remove this painting?</h4>
             <div>
@@ -28,6 +24,7 @@
                 </form>
             </div>
         </div>
-    </div>   
+    </div>
+  <object th:replace="fragments/head :: js"></object>
 </body>
 </html>

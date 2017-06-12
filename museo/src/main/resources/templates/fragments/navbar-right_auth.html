@@ -37,7 +37,7 @@
           </li>
 
           <!--/* ANONYMOUS */-->
-          <li th:fragment="anonymous">
+          <li th:fragment="anonymous(active)" th:classappend="${active} == true ? 'active'">
             <a href="#login" th:href="@{/login}">
               <span class="glyphicon glyphicon-log-in"></span>
               <span>Login</span>

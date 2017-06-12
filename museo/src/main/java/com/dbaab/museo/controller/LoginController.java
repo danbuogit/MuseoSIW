@@ -13,7 +13,7 @@ public class LoginController
     public String showLogin(Principal principal)
     {
         boolean alreadyAuthenticated = principal != null;
-        return alreadyAuthenticated ? "redirect:home" : "login";
+        return alreadyAuthenticated ? "redirect:/home" : "login";
     }
 
     @RequestMapping("/hello")

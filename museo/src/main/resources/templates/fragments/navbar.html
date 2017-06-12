@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../static/css/main.css"/>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="nav">
+  <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="nav(active)" th:with="search = ${search} ?: false">
     <div class="container dbaab-navbar-container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -19,16 +19,21 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#home" th:href="@{/homeController}">Museo SIW</a>
+        <a class="navbar-brand" href="#home" th:href="@{/home}">Museo SIW</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#gallery" th:href="@{/galleryController}">Galleria</a></li>
-          <li><a href="#artists" th:href="@{/artistController}">Artisti</a></li>
-          <li><a href="#contacts" th:href="@{/contacts}">Contacts</a></li>
+          <li th:classappend="${active} == 1 ? 'active'"><a href="#gallery" th:href="@{/gallery}">Galleria</a></li>
+          <li th:classappend="${active} == 2 ? 'active'"><a href="#artists" th:href="@{/artists}">Artisti</a></li>
+          <li th:classappend="${active} == 3 ? 'active'"><a href="#contacts" th:href="@{/contacts}">Contatti</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li th:replace="fragments/navbar-right_auth :: ${#authorization.expression('isAuthenticated()')} ? 'authenticated' : 'anonymous'"></li>
+          <li sec:authorize="isAuthenticated()" th:remove="tag">
+            <div th:replace="fragments/navbar-right_auth :: authenticated"></div>
+          </li>
+          <li sec:authorize="isAnonymous()" th:with="active = ${active} == 'login' ? true : false" th:remove="tag">
+            <div th:replace="fragments/navbar-right_auth :: anonymous(${active})"></div>
+          </li>
         </ul>
       </div>
     </div>
