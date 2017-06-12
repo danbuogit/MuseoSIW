@@ -24,6 +24,13 @@ body {
 /*—————————————————*
  |     NAVBAR      |
  *—————————————————*/
+.navbar-inverse {
+  background-image: linear-gradient(to bottom, #992525 0, #711a1a 100%);
+  box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
 @media screen and (min-width: 767px) {
   .dbaab-navbar-container {
     width: 72%;
@@ -37,14 +44,14 @@ body {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* Navbar items :hover & :focus/.open */
-.navbar-inverse .navbar-brand:hover,
-.navbar-inverse .navbar-brand:focus {
+/* Navbar items: :hover & :focus/.open */
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-brand:hover {
   color: hsl(56, 25%, 90%);
   text-shadow: 0 -1px 5px hsla(55, 40%, 65%, 0.60);
 }
-.navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > .dropdown.dbaab-navbar-auth-dropdown.open > a {
   /* This style has been adapted from the style applied to '.navbar-nav > .open > a' by bootstrap */
   background-image: -webkit-linear-gradient(top, #992525 0, #711a1a 100%);
@@ -60,6 +67,23 @@ body {
 }
 .navbar-inverse .navbar-nav > .dropdown.dbaab-navbar-auth-dropdown.open > a {
   color: hsl(56, 25%, 95%);
+}
+
+/* Navbar items: .active */
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
+  /* This style has been adapted from the style applied to '.navbar-nav > .active > a' by bootstrap */
+  background-image: -webkit-linear-gradient(top, hsl(0, 61%, 5%) 0, hsl(0, 61%, 25%) 100%);
+  background-image: -o-linear-gradient(top, hsl(0, 61%, 5%) 0, hsl(0, 61%, 25%) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(hsl(0, 61%, 5%)), to(hsl(0, 61%, 25%)));
+  background-image: linear-gradient(to bottom, hsl(0, 61%, 5%) 0, hsl(0, 61%, 25%) 100%);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+
+  color: #f8f8f8;
+  background-color: hsl(0, 61%, 5%);
 }
 
 /* Dropdown Menu toggle */
@@ -92,8 +116,8 @@ body {
 .dropdown-menu > li > form .dbaab-dropdown-form-btn > .glyphicon-log-out {
   padding-right: 1rem;
 }
-.dropdown-menu > li > form .dbaab-dropdown-form-btn:hover,
-.dropdown-menu > li > form .dbaab-dropdown-form-btn:focus {
+.dropdown-menu > li > form .dbaab-dropdown-form-btn:focus,
+.dropdown-menu > li > form .dbaab-dropdown-form-btn:hover {
   /* This is the same style applied to '.dropdown-menu > li > a' by bootstrap. */
   text-decoration: none;
   color: #262626;
@@ -180,13 +204,6 @@ body {
 
 
 /***************************************/
-
-.navbar {
-  background-image: linear-gradient(to bottom, #992525 0, #711a1a 100%);
-  box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
-  margin-bottom: 0;
-  border-radius: 0;
-}
 
 .sidenav {
   height: 100%;

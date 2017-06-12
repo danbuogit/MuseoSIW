@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="container-fluid">
-    <nav th:replace="fragments/navbar :: nav"></nav>
+    <nav th:replace="fragments/navbar :: nav(_)"></nav>
     <h2>Hello <strong th:text="${#authorization.expression('isAuthenticated()')} ? ${#authentication.principal.username} : 'Anonymous'"><i>Anonymous</i></strong>!</h2>
     <p sec:authorize="${hasAuthority(T(com.dbaab.museo.model.Role).ADMIN.toString())}">
       You are authenticated as <i><span sec:authentication="principal.authorities"></span></i>.
