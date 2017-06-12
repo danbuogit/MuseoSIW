@@ -16,7 +16,6 @@ public class Painting
     private String title;
 
     @NotNull
-    @Min(0)
     private Integer year;
 
     @NotEmpty
