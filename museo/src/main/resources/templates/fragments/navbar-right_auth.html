@@ -28,7 +28,7 @@
                   <div>
                     <button class="dbaab-dropdown-form-btn" type="submit">
                       <span class="glyphicon glyphicon-log-out"></span>
-                      <span>Sign Out</span>
+                      <span th:text="#{navbar.logout}">Log Out</span>
                     </button>
                   </div>
                 </form>
@@ -40,7 +40,7 @@
           <li th:fragment="anonymous(active)" th:classappend="${active} == true ? 'active'">
             <a href="#login" th:href="@{/login}">
               <span class="glyphicon glyphicon-log-in"></span>
-              <span>Login</span>
+              <span th:text="#{navbar.login}">Log In</span>
             </a>
           </li>
         </ul>

@@ -65,15 +65,8 @@ public class PaintingController
             @RequestParam(value = "id", required = true) Long id)
     {
         if (decision.equals("y"))
-        {
             this.paintingService.delete(id);
-            model.addAttribute("removed", true);
-        }
-        else
-            model.addAttribute("removed", false);
-
-        return "redirectionPage";
-
+        return "redirect:/gallery";
     }
 
     @GetMapping("/admins/painting/modify")

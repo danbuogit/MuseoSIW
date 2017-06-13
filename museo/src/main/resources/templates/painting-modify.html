@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title th:text="${'&ldquo;' + painting.title + '&ldquo; by ' + painting.artist.toString()}">Modify painting's info</title>
+  <title th:text="#{forms.painting.edit.page-title(${painting.title}, ${painting.artist.getNameAndSurname()})}">Modify painting's info</title>
   <meta th:replace="fragments/head :: head"/>
   <link rel="stylesheet" href="/css/forms.css" th:href="@{/css/forms.css}"/>
 </head>
