@@ -7,7 +7,9 @@
 <body>
   <nav th:replace="fragments/navbar :: nav('login')"></nav>
   <div class="container-fluid text-center">
-    <div>
+    <hr/>
+    <div class="panel" style="width: 60%; margin:auto">
+    <div class="panel body">
       <h3>Prego, inserire le credenziali</h3>
       <!-- impostare pagina successiva. Passa ad una schermata del tipo "benvenuto, scelga i comandi" oppure torna alla home? -->
       <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -31,8 +33,10 @@
           </div>
         </form>
       </div>
-      <p style="clear: both;">L'accesso al sistema Ã¨ consentito solo al personale autorizzato.</p>
+      <p style="clear: both;">L'accesso al sistema è consentito solo al personale autorizzato.</p>
     </div>
+  </div>
+  <hr/>
   </div>
   <object th:replace="fragments/head :: js"></object>
 </body>

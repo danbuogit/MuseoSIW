@@ -10,9 +10,13 @@
     <div class="row content">
         <div class="col-sm-8 text-left">
             <hr/>
-            <h2 th:text="${artist.name} + ' ' + ${artist.surname}"></h2>
-            <p th:text="'Nato in ' + ${artist.nation} + ' nel ' + ${artist.birthDate}"/>
-            <p th:if="${artist.deathDate!=null}" th:text="'Deceduto nel ' + ${artist.deathDate}"/>
+            <div class="panel" style="width: 60%; margin:auto">
+                <div class="panel body" style="text-align: center">
+                    <h2 th:text="${artist.name} + ' ' + ${artist.surname}"></h2>
+                    <p th:text="'Nato in ' + ${artist.nation} + ' nel ' + ${artist.birthDate}"/>
+                    <p th:if="${artist.deathDate!=null}" th:text="'Deceduto nel ' + ${artist.deathDate}"/>
+                </div>
+            </div>
             <hr/>
         </div>
     </div>
