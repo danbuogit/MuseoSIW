@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Painting</title>
+  <meta th:replace="fragments/head :: head" />
+  <link rel="stylesheet" href="/css/forms.css" th:href="@{/css/forms.css}"/>
+</head>
+<body>
+  <div class="container">
+    <div id="main-content">
+      <div th:replace="fragments/painting-form :: form(@{/admins/painting/add}, post, true)"></div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/js/forms.js" th:src="@{/js/forms.js}"></script>
+  <object th:replace="fragments/head :: js"></object>
+</body>
+</html>

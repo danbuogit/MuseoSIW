@@ -30,19 +30,19 @@ public class PaintingController
     private ArtistService artistService;
 
     @GetMapping("/admins/painting/add")
-    public String retrieveArtistsInfo(Model model)
+    public String showAddForm(Model model, Painting painting)
     {
-        List<Artist> artistList = artistService.findAllOrderedByName();
-        model.addAttribute("artistList", artistList);
-        model.addAttribute("painting", new Painting());
-        return "addPaintingForm";
+        List<Artist> artists = artistService.findAllOrderedByName();
+        model.addAttribute("artists", artists);
+        model.addAttribute("painting", painting);
+        return "painting-add";
     }
 
     @PostMapping("/admins/painting/add")
     public String addPainting(@Valid @ModelAttribute Painting painting, BindingResult bindingResult, Model model)
     {
         if (bindingResult.hasErrors())
-            return "addPaintingForm";
+            return this.showAddForm(model, painting);
 
         model.addAttribute("painting", painting);
         model.addAttribute("isRemoving", false);
@@ -77,7 +77,8 @@ public class PaintingController
     }
 
     @GetMapping("/admins/painting/modify")
-    public String showModifyForm(Model model, @RequestParam(value = "id", required = true) Long id,
+    public String showModifyForm(Model model,
+            @RequestParam(value = "id", required = true) Long id,
             @RequestHeader(value = "referer", required = false) final String referer)
     {
         Painting painting = this.paintingService.findById(id);
@@ -93,9 +94,9 @@ public class PaintingController
     }
 
     @PostMapping("/admins/painting/modify")
-    public String modify(Model model,
+    public String modify(Model model, BindingResult bindingResult,
             @RequestParam(value = "ref", required = true) String referer,
-            @Valid @ModelAttribute("painting") Painting painting, BindingResult bindingResult)
+            @Valid @ModelAttribute("painting") Painting painting)
     {
 
         if (bindingResult.hasErrors())
