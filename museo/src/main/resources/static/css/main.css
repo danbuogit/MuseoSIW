@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
 /***********************************************************************
+ * page color: #fff
  * base-color: #992525
  * navbar gradient: linear-gradient(to bottom, #992525 0, #711a1a 100%)
  ***********************************************************************/
@@ -11,9 +12,13 @@ body {
   background-repeat: repeat-y
 }
 
+.dbaab-container {
+  background-color: #fff;
+}
+
 @media screen and (min-width: 767px) {
   .dbaab-container {
-    box-shadow: 0px 0px 8px 0px;
+    box-shadow: 0px 0px 8px 2px;
     width: 70%;
   }
 }
