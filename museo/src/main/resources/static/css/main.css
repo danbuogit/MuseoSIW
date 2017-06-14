@@ -8,8 +8,11 @@
 
 body {
   padding-top: 51px;
+  background-color: #420800;
   background-image: url("/img/background_img.jpg");
-  background-repeat: repeat-y
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-attachment: fixed;
 }
 
 .dbaab-container {
