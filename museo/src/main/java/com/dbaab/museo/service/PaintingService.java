@@ -3,6 +3,9 @@ package com.dbaab.museo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,26 +46,6 @@ public class PaintingService
         this.repository.delete(painting);
     }
 
-    public List<Painting> findFirst10OrderedBy(String order)
-    {
-        List<Painting> list = null;
-
-        if (order.equals("artistName"))
-            list = this.repository.findFirst10ByOrderByArtistName();
-        else if (order.equals("artistSurname"))
-        	list = this.repository.findFirst10ByOrderByArtistSurname();
-        else if (order.equals("yearAsc"))
-            list = this.repository.findFirst10ByOrderByYearAsc();
-        else if (order.equals("yearDesc"))
-        	list= this.repository.findFirst10ByOrderByYearDesc();
-        else if (order.equals("title"))
-            list = this.repository.findFirst10ByOrderByTitle();
-        else
-            list = this.findFirst10();
-
-        return list;
-    }
-
     public List<Painting> findFirst3()
     {
         return this.repository.findFirst3By();
@@ -71,5 +54,35 @@ public class PaintingService
     public List<Painting> findFirst10()
     {
         return this.repository.findFirst10By();
+    }
+    
+    public Page<Painting> findFirst10AtPage(int pageIndex)
+    {
+    	Page<Painting> paintings = this.repository.findAll(goToPage(pageIndex));
+    	return paintings;
+    }
+    
+    public Page<Painting> findFirst10AtPage(int pageIndex, String order)
+    {
+    	Page<Painting> painting = this.repository.findAll(goToPage(pageIndex, order));
+    	return painting;
+    }
+    
+    private PageRequest goToPage(int pageIndex)
+    {
+    	return (new PageRequest(pageIndex, 10));
+    }
+    
+    private PageRequest goToPage(int pageIndex, String order)
+    {
+    	 if (order.equals("artistName"))
+             return (new PageRequest(pageIndex, 10, Sort.Direction.ASC, "artistName"));
+         if (order.equals("artistSurname"))
+         	return (new PageRequest(pageIndex, 10, Sort.Direction.ASC, "artistSurname"));
+         if (order.equals("yearAsc"))
+             return (new PageRequest(pageIndex, 10, Sort.Direction.ASC, "Year"));
+         if (order.equals("yearDesc"))
+         	return (new PageRequest(pageIndex, 10, Sort.Direction.DESC, "Year"));
+         return (new PageRequest(pageIndex, 10, Sort.Direction.ASC, "Title"));
     }
 }
