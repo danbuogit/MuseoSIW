@@ -11,7 +11,7 @@
       <h1 th:text="#{artists.page-heading}">Registered artists</h1>
       <div class="list-group dbaab-artists-list">
         <div th:each="artist : ${artistList}" th:object="${artist}" th:remove="tag">
-          <a class="list-group-item" href="#" th:href="@{/artistDetailsController(painter=*{id})}">
+          <a class="list-group-item" href="#" th:href="@{/artist(id=*{id})}">
             <span th:text="${artist.getNameAndSurname()}"></span>
             <span class="badge" th:title="#{artists.tooltip.paintings-number}" th:text="*{paintings.size()}"></span>
           </a>

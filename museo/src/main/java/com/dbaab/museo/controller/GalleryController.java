@@ -1,7 +1,5 @@
 package com.dbaab.museo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -21,38 +19,39 @@ public class GalleryController
     private PaintingService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getFirstTenPictures(Model model, @RequestParam(value = "order", required = false) String order, @RequestParam(value = "page", required = false) String page)
+    public String getFirstTenPictures(Model model,
+            @RequestParam(value = "order", required = false) String order,
+            @RequestParam(value = "page", required = false) String page)
     {
         Page<Painting> paintingList;
-        
-        if(page==null){
-        	page="0";
-        }
-        
+
+        if (page == null)
+            page = "0";
+
         int pageIndex = Integer.parseInt(page);
-        
+
         if (order == null || order.equals("none"))
         {
             paintingList = service.findFirst10AtPage(pageIndex);
-            order="none";
-        }	
+            order = "none";
+        }
         else
             paintingList = service.findFirst10AtPage(pageIndex, order);
 
         model.addAttribute("paintingList", paintingList);
-        //used for page management
+        // used for page management
         model.addAttribute("order", order);
         model.addAttribute("page", pageIndex);
         model.addAttribute("hasNext", paintingList.hasNext());
 
         return "gallery";
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
     public String searchPaintingBy(Model model, @RequestParam(value = "searchBy") String order)
     {
-    	//TODO: finire di scrivere metodo
-    	
-    	return "gallery";
+        // TODO: finire di scrivere metodo
+
+        return "gallery";
     }
 }
