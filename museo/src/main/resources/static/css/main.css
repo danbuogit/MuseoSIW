@@ -32,9 +32,17 @@ img {
   height: auto;
 }
 
-.dropdown .caret, 
-.dropup .caret { 
+.dropdown .btn .caret, 
+.dropup .btn .caret { 
   margin-left: 2px; 
+}
+.dropup .btn .caret,
+.dropup .btn.btn-lg .caret {
+  margin-bottom: 3px;
+}
+.dropup .btn.btn-sm .caret,
+.dropup .btn.btn-xs .caret {
+  margin-bottom: 2px;
 }
 
 
@@ -147,7 +155,6 @@ img {
  *—————————————————*/
 .dbaab-footer {
   display: flex;
-  margin-top: 20px;
   padding: 15px 5px;
   border-top: 1px solid #d1cccc;
   font-size: 12px;
@@ -248,6 +255,15 @@ img {
 }
 .dbaab-adm-painting-controls > .dbaab-adm-cmd-btn {
   margin: 0 0 0 0.5vw;
+}
+
+
+/*—————————————————*
+ |     ARTISTS     |
+ *—————————————————*/
+.dbaab-artists-list {
+  max-width: 450px;
+  margin-top: 20px;
 }
 
 

@@ -2,33 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title th:text="#{artists.page-title}">DbAab Museum | Artists</title>
-  <meta th:replace="fragments/head :: head"/>
+  <meta th:replace="fragments/head :: head" />
 </head>
 <body>
   <nav th:replace="fragments/navbar :: nav(2)"></nav>
-<div class="container-fluid text-right">    
-  	<div class="row content">
-    	<div class="col-sm-8 text-right">   			
-            <hr/>
-    	    <!-- barra di ricerca, bisogna impostare l'action-->
-      		<form class="navbar-form navbar-right" action="#" method="post">
-        	   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Ricerca per nome"/>
-               </div>
-                    <button type="submit" class="btn btn-default">Cerca</button>
-      		</form>
-      		<div class="col-sm-8 text-left">
-      		    <ul>
-      		        <li th:each="artist : ${artistList}">
-					   <a th:href="@{/artistDetailsController(painter=${artist.id})}" th:text="${artist.name} + ' ' + ${artist.surname}"></a>
-      			   </li>
-      			</ul>
-      		</div>
-      		<hr/>
-    	</div>
+  <div class="container dbaab-container">
+    <div id="main-content">
+      <h1 th:text="#{artists.page-heading}">Registered artists</h1>
+      <div class="list-group dbaab-artists-list">
+        <div th:each="artist : ${artistList}" th:object="${artist}" th:remove="tag">
+          <a class="list-group-item" href="#" th:href="@{/artistDetailsController(painter=*{id})}">
+            <span th:text="${artist.getNameAndSurname()}"></span>
+            <span class="badge" th:title="#{artists.tooltip.paintings-number}" th:text="*{paintings.size()}"></span>
+          </a>
+        </div>
+      </div>
     </div>
-</div>
-  <footer th:replace="fragments/footer :: footer-fluid"></footer>
+    <footer th:replace="fragments/footer :: footer-fluid"></footer>
+  </div>
   <object th:replace="fragments/head :: js"></object>
 </body>
 </html>

@@ -6,18 +6,16 @@
 </head>
 <body>
   <nav th:replace="fragments/navbar :: nav(2)"></nav>
-<div class="container-fluid text-left">
-    <div class="row content">
-        <div class="col-sm-8 text-left" th:object="${artist}">
-            <hr/>
-            <h2 th:text="${artist.getNameAndSurname()}"></h2>
-            <p th:text="#{artists.details.born-in(*{nation}, *{#dates.format(birthDate, #messages.msg('common.date-format'))})}">Born in {country}, {date}.</p>
-            <p th:if="*{deathDate}" th:text="#{artists.details.died-in(*{#dates.format(deathDate, #messages.msg('common.date-format'))})}">Died in {date}.</p>
-            <hr/>
-        </div>
+  <div class="container dbaab-container">
+    <div id="main-content" th:object="${artist}">
+      <h1 th:text="${artist.getNameAndSurname()}"></h1>
+      <p>
+        <span th:text="#{artists.details.born-in(*{nation}, *{#dates.format(birthDate, #messages.msg('common.date-format'))})}">Born in {country}, {date}.</span><br/>
+        <span th:if="*{deathDate}" th:text="#{artists.details.died-on(*{#dates.format(deathDate, #messages.msg('common.date-format'))})}">Died in {date}.</span>
+      </p>
     </div>
-</div>
-  <footer th:replace="fragments/footer :: footer-fluid"></footer>
+    <footer th:replace="fragments/footer :: footer-nofluid"></footer>
+  </div>
   <object th:replace="fragments/head :: js"></object>
 </body>
 </html>
