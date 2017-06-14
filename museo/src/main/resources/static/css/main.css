@@ -26,6 +26,9 @@ body {
 #main-content {
   padding: 20px 15px;
 }
+#main-content > .page-header:first-child {
+  margin-top: 20px;
+}
 
 img {
   max-width: 100%;
@@ -43,6 +46,11 @@ img {
 .dropup .btn.btn-sm .caret,
 .dropup .btn.btn-xs .caret {
   margin-bottom: 2px;
+}
+
+h1 > .glyphicon:first-child, h2 > .glyphicon:first-child, h3 > .glyphicon:first-child,
+h4 > .glyphicon:first-child, h5 > .glyphicon:first-child, h6 > .glyphicon:first-child {
+  margin-right: 5px;
 }
 
 
