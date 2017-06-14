@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Dettaglio artista</title>
+  <title th:text="#{artists.details.page-title(${artist.getNameAndSurname()})}">Artist details</title>
   <meta th:replace="fragments/head :: head" />
 </head>
 <body>
   <nav th:replace="fragments/navbar :: nav(2)"></nav>
 <div class="container-fluid text-left">
     <div class="row content">
-        <div class="col-sm-8 text-left">
+        <div class="col-sm-8 text-left" th:object="${artist}">
             <hr/>
-            <div class="panel" style="width: 60%; margin:auto">
-                <div class="panel body" style="text-align: center">
-                    <h2 th:text="${artist.name} + ' ' + ${artist.surname}"></h2>
-                    <p th:text="'Nato in ' + ${artist.nation} + ' nel ' + ${artist.birthDate}"/>
-                    <p th:if="${artist.deathDate!=null}" th:text="'Deceduto nel ' + ${artist.deathDate}"/>
-                </div>
-            </div>
+            <h2 th:text="${artist.getNameAndSurname()}"></h2>
+            <p th:text="#{artists.details.born-in(*{nation}, *{#dates.format(birthDate, #messages.msg('common.date-format'))})}">Born in {country}, {date}.</p>
+            <p th:if="*{deathDate}" th:text="#{artists.details.died-in(*{#dates.format(deathDate, #messages.msg('common.date-format'))})}">Died in {date}.</p>
             <hr/>
         </div>
     </div>

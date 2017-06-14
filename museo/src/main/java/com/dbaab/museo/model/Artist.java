@@ -50,10 +50,20 @@ public class Artist
         this.paintings = new ArrayList<Painting>();
     }
     
+    public String getNameAndSurname()
+    {
+        return String.format("%s %s", this.name, this.surname);
+    }
+    
     @Override
     public String toString()
     {
-        return String.format("%s %s", this.name, this.surname);
+        return String.format("%s %s; born %s, %s %s",
+                this.name,
+                this.surname,
+                this.birthDate.toString(),
+                this.nation,
+                this.deathDate != null ? String.format("- died %s", this.deathDate.toString()) : "");
     }
 
     // GET & SET

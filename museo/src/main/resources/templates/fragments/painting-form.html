@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta th:replace="fragments/head :: head"/>
+  <link rel="stylesheet" href="/css/forms.css" th:href="@{/css/forms.css}"/>
+</head>
+<body>
+  <div class="container">
+    <div id="main-content">
+      <div class="panel panel-default dbaab-form-painting" th:fragment="form(action, method, no_id)">
+        <div class="panel-body">
+          <form class="form-horizontal" action="#" th:action="${action}" method="post" th:method="${method}" th:object="${painting}">
+            <input th:unless="${no_id}" type="hidden" th:field="*{id}"/>
+            <input type="hidden" id="ref" name="ref" th:value="${ref}"/>
+            <!--/* TITLE */-->
+            <div class="col-sm-12">
+              <div id="dbaab-form-painting-title" class="form-group" th:classappend="${#fields.hasErrors('title')} ? has-error">
+                <label class="col-sm-1 control-label" th:for="${#ids.next('title')}" th:text="#{forms.painting.label.title}">Title</label>
+                <div class="col-sm-11">
+                  <input type="text" class="form-control" th:field="*{title}" th:placeholder="#{forms.painting.placeholder.title}" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!--/* LEFT BLOCK */--> 
+            <div class="col-sm-8">
+              <!--/* ARTIST */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('artist')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('artist')}" th:text="#{forms.painting.label.artist}">Artist</label>
+                <div class="col-sm-10">
+                  <select class="form-control" th:field="*{artist}" required="required">
+                    <option th:each="artist : ${artists}" th:value="${artist.id}" th:text="${artist}">???</option>
+                  </select>
+                  <span class="help-block" th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}"></span>
+                </div>
+              </div>
+
+              <!--/* TECHNIQUE */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('technique')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('technique')}" th:text="#{forms.painting.label.technique}">Technique</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" th:field="*{technique}" th:placeholder="#{forms.painting.placeholder.technique}" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('technique')}" th:errors="*{technique}"></span>
+                </div>
+              </div>
+
+              <!--/* DIMENSIONS */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('dimensions')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('dimensions')}" th:text="#{forms.painting.label.dimensions}">Dimensions</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" th:field="*{dimensions}" th:placeholder="#{forms.painting.placeholder.dimensions}" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('dimensions')}" th:errors="*{dimensions}"></span>
+                </div>
+              </div>
+
+              <!--/* YEAR */-->
+              <div class="form-group" th:classappend="${#fields.hasErrors('year')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('year')}" th:text="#{forms.painting.label.date}">Year</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="number" th:field="*{year}" th:placeholder="#{forms.painting.placeholder.date}" required="required"/>
+                  <span class="help-block" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+                </div>
+              </div>
+              
+              <!--/* URL */-->
+              <div id="dbaab-form-painting-url" class="form-group" th:classappend="${#fields.hasErrors('url')} ? has-error">
+                <label class="col-sm-2 control-label" th:for="${#ids.next('url')}" th:text="#{forms.painting.label.url}">URL</label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+                    <input class="form-control" type="url" th:field="*{url}" th:placeholder="#{forms.painting.placeholder.url}"/>
+                    <span class="input-group-btn" onclick="updatePaintingPreview()">
+                      <button class="btn btn-default" type="button" th:text="#{forms.painting.button.preview}">Preview</button>
+                    </span>
+                  </div>
+                  <span class="help-block" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+                </div>
+              </div>
+
+              <!--/* SUBMIT BTN */-->
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button class="btn btn-primary" type="submit" th:text="#{forms.painting.button.submit}">Submit</button>
+                </div>
+              </div>
+            </div>
+            
+            <!--/* THUMBNAIL PREVIEW */-->
+            <div class="col-sm-4">
+              <img id="dbaab-form-painting-preview" class="img-thumbnail" th:src="*{url} ?: @{/img/img-placeholder.png}"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/js/forms.js" th:src="@{/js/forms.js}"></script>
+  <object th:replace="fragments/head :: js"></object>
+</body>
+</html>
