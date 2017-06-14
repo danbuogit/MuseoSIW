@@ -32,18 +32,18 @@
     	<div class="col-sm-2 sidenav">
       		<div class="well">
       			<a href="http://www.louvre.fr/en"><img src="http://prenotazioni.parigi.it/img/cover/thumb_161111163223.jpg"/></a>
-        		<p>Our partnerships</p>
+        		<p th:text="#{home.adv.partnership}">Our partnerships</p>
       		</div>
       		<div class="well">
       			<a href="http://www.uniroma3.it/"><img src="http://host.uniroma3.it/uffici/urp/images/RomaTre.jpg"/></a>
-        		<p>Our sponsor</p>
+        		<p th:text="#{home.adv.sponsor}">Our sponsor</p>
       		</div>
     	</div>
   	</div>
 </div>
 
   <footer class="container-fluid text-center">
-    <h4>Puoi continuare a consultare gli altri quadri nella <a href="gallery">galleria</a>.</h4>
+    <h4 th:utext="#{home.footer.advice}">Puoi continuare a consultare gli altri quadri nella <a href="gallery">galleria</a>.</h4>
   </footer>
   <object th:replace="fragments/head :: js"></object>
 </body>
