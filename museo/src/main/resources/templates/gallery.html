@@ -67,6 +67,9 @@
           </div>
         </div>
       </div><!--/*panel*/-->
+      <div>
+        <span><a th:if="${page}!=0" th:href="@{/gallery(order=${order}, page=${page-1})}">Precedente</a> <b th:text="${page}"></b> <a th:if="${hasNext}" th:href="@{/gallery(order=${order}, page=${page+1})}">Successivo</a></span>
+      </div>
     </div>
   </div>
   <object th:replace="fragments/head :: js"></object>

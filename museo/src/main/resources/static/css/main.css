@@ -7,6 +7,8 @@
 
 body {
   padding-top: 51px;
+  background-image: url("background_img.jpg");
+  background-repeat: repeat-y
 }
 
 @media screen and (min-width: 767px) {
@@ -14,6 +16,11 @@ body {
     box-shadow: 0px 0px 8px 0px;
     width: 70%;
   }
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 #main-content {

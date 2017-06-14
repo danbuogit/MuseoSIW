@@ -23,7 +23,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li th:classappend="${active} == 1 ? 'active'"><a href="#gallery" th:href="@{/gallery}" th:text="#{navbar.gallery}">Gallery</a></li>
+          <li th:classappend="${active} == 1 ? 'active'"><a href="#gallery" th:href="@{/gallery(page=0)}" th:text="#{navbar.gallery}">Gallery</a></li>
           <li th:classappend="${active} == 2 ? 'active'"><a href="#artists" th:href="@{/artists}" th:text="#{navbar.artists}">Artists</a></li>
           <li th:classappend="${active} == 3 ? 'active'"><a href="#contacts" th:href="@{/contacts}" th:text="#{navbar.contacts}">Contacts</a></li>
         </ul>
