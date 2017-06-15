@@ -16,7 +16,7 @@
         <div style="text-align: justify; padding-bottom: 250px;"></div>
 
         <!--/* FOOTER */-->
-        <footer th:fragment="footer-nofluid" class="dbaab-footer">
+        <footer th:fragment="foot" th:with="fluid = ${fluid} ?: false" class="dbaab-footer" th:classappend="${fluid == true} ? 'dbaab-footer-fluid'">
           <ul class="dbaab-footer-left">
             <li><span>© 2017 Daniele Buonadonna, Alessandro Attard Barbini</span></li>
           </ul>
@@ -43,7 +43,7 @@
       </div>
 
       <!--/* FOOTER-FLUID */-->
-      <footer th:fragment="footer-fluid" class="dbaab-footer dbaab-footer-fluid">
+      <footer class="dbaab-footer dbaab-footer-fluid">
         <ul class="dbaab-footer-left">
           <li><span>© 2017 Daniele Buonadonna, Alessandro Attard Barbini</span></li>
         </ul>
