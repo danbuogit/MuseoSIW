@@ -45,6 +45,11 @@ public class PaintingService
     {
         this.repository.delete(painting);
     }
+    
+    public List<Painting> findByArtistId(Long artistId)
+    {
+        return this.repository.findByArtistId(artistId);
+    }
 
     public List<Painting> findFirst3()
     {

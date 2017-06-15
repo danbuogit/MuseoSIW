@@ -6,6 +6,9 @@ import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.dbaab.museo.validation.annotations.PastYear;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 public class Painting
@@ -33,6 +36,8 @@ public class Painting
 
     @NotNull
     @ManyToOne
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     private Artist artist;
 
     public Painting()
