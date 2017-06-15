@@ -1,0 +1,137 @@
+@CHARSET "UTF-8";
+
+/*—————————————————*
+ |    CAROUSEL     |
+ *—————————————————*/
+#dbaab-carousel {
+  margin: 0.8vh 0.2vw;
+}
+
+/* Indicators */
+.carousel-indicators {
+  bottom: 0px;
+}
+
+@media screen and (max-width: 1024px) {
+  /* If screen width < 1024, reduce the dimensions of the indicators */
+  .carousel-indicators > li {
+    width: 8px;
+    height: 8px;
+  }
+  .carousel-indicators > li.active {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Caption */
+.carousel-caption {
+  padding-bottom: 15px;
+}
+.carousel-caption > h3 {
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+/* Item's img */
+#dbaab-carousel > .carousel-inner > .item > img {
+  margin: auto;
+  height: inherit;
+}
+
+/* @media screen width – height & caption size */
+@media screen and (min-width: 1441px) {
+  #dbaab-carousel > .carousel-inner > .item {
+    height: 480px;
+  }
+
+  .carousel-caption {
+    padding-bottom: 25px;
+  }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1281px) {
+  #dbaab-carousel > .carousel-inner > .item {
+    height: 380px;
+  }
+}
+
+@media screen and (max-width: 1280px) and (min-width: 1025px) {
+  #dbaab-carousel > .carousel-inner > .item {
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 767px) {
+  #dbaab-carousel > .carousel-inner > .item {
+    height: 240px;
+  }
+
+  .carousel-caption > h3 {
+    font-size: 22px;
+    margin-bottom: 0.4rem;
+  }
+  .carousel-caption > p {
+    margin-bottom: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 766px) and (min-width: 641px) {
+  #dbaab-carousel > .carousel-inner > .item {
+    height: 200px;
+  }
+
+  .carousel-caption > h3 {
+    font-size: 20px;
+    margin-bottom: 0.35rem;
+  }
+  .carousel-caption > p {
+    margin-bottom: 0.2rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #dbaab-carousel > .carousel-inner > .item {
+    height: 140px;
+  }
+
+  .carousel-caption {
+    padding-bottom: 10px;
+  }
+  .carousel-caption > h3 {
+    font-size: 18px;
+    margin-bottom: 0.25rem;
+  }
+  .carousel-caption > p {
+    margin-bottom: 0.2rem;
+  }
+}
+
+/*—————————————————*
+ |  PANEL-FOOTER   |
+ *—————————————————*/
+#dbaab-home-footer {
+  display: flex;
+  color: #5b5f7b;
+}
+#dbaab-home-footer > * {
+  flex: 1 1 auto;
+}
+
+#dbaab-home-footer .well {
+  display: flex;
+  margin: 5px 2px;
+  border-color: #e6e6e6;
+}
+.well > .well-content-center {
+  margin: auto;
+  text-align: center;
+}
+
+#dbaab-home-footer img {
+  max-height: 280px;
+}
+
+#dbaab-home-footer p {
+  margin: 5px 0 2px 0;
+}
