@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{contacts.page-title}">Contacts</title>
+  <meta th:replace="fragments/head :: head"/>
+</head>
+<body>
+  <nav th:replace="fragments/navbar :: nav(3)"></nav>
+  <div class="container dbaab-container">
+    <div id="main-content">
+      <h1 class="page-header" th:text="#{contacts.page-heading}">Contatti</h1>
+      <h4>
+        <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+        <span th:text="#{contacts.label.telephone}">Telephone</span>:
+        <small th:text="#{contacts.field-value.telephone}">+39 06696969</small>
+      </h4>
+      <h4>
+        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+        <span th:text="#{contacts.label.email}">Email</span>:
+        <small th:text="#{contacts.field-value.email}">questa.email@nonesiste.com</small>
+      </h4>
+      <h4>
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        <span th:text="#{contacts.label.address}">Address</span>:
+        <small th:text="#{contacts.field-value.address}"></small>
+      </h4>
+    </div>
+    <footer th:replace="fragments/footer :: foot"></footer>
+  </div>
+  <object th:replace="fragments/head :: js"></object>
+</body>
+</html>

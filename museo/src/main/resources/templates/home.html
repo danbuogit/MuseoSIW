@@ -3,48 +3,69 @@
 <head>
   <title th:text="#{home.page-title}">Home</title>
   <meta th:replace="fragments/head :: head"/>
+  <link rel="stylesheet" href="/css/main-home.css" th:href="@{/css/main-home.css}"/>
 </head>
 <body>
   <nav th:replace="fragments/navbar :: nav(_)"></nav>
-    <div class="container-fluid text-center">    
-  	<div class="row content">
-    	<div class="col-sm-8 text-left">
-    	<!-- 
-    	il th:if ha la seguente funzione: se ritorna false, non mostra quel che contiene. Come fare quindi per visualizzare la frase sottostante nel caso in cui viene false?
-    	<div th:if="${listOfThreePainting == null}" th:text="Ops, it seems we don't have any painting right now...">
-    	</div>
-    	-->
-    	<hr/>
-    	<div th:if="${listOfThreePainting != null}" th:each="painting : ${listOfThreePainting}">
-    	   <div class="panel panel-default">
-    	        <div class="panel-body">
-                      <div class="media">
-                          <div class="media-left">
-                              <img th:src="${painting.url}"/>
-                              <p th:text="${painting.artist.name} + ' ' + ${painting.artist.surname} + ' - ' + ${painting.title} + ', ' + ${painting.year}"/>
-                          </div>
-                      </div>
+  <div class="container dbaab-container">
+    <div id="main-content">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!--/* CAROUSEL */-->
+          <div id="dbaab-carousel" class="carousel slide" data-ride="carousel">
+            <!--/* Indicators */-->
+            <ol th:if="${listOfThreePainting}" class="carousel-indicators">
+              <li th:each="painting,status : ${listOfThreePainting}" data-target="#carousel-example-generic" th:attr="data-slide-to=${status.index}" th:classappend="${status.index == 0} ? 'active'"></li>
+            </ol>
+    
+            <!--/* Wrapper for slides */-->
+            <div class="carousel-inner" role="listbox">
+              <div th:if="${listOfThreePainting}" class="item" th:each="painting,status : ${listOfThreePainting}" th:classappend="${status.index == 0} ? 'active'" th:object="${painting}">
+                <img th:src="@{*{url}}" th:alt="*{title}"/>
+                <div class="carousel-caption">
+                  <h3 th:text="*{title}"></h3>
+                  <p th:text="*{artist.getNameAndSurname()}"></p>
                 </div>
-    	   </div>
-    	</div>
-    	<hr/>
-        </div>		
-    	<div class="col-sm-2 sidenav">
-      		<div class="well">
-      			<a href="http://www.louvre.fr/en"><img src="http://prenotazioni.parigi.it/img/cover/thumb_161111163223.jpg"/></a>
-        		<p th:text="#{home.adv.partnership}">Our partnerships</p>
-      		</div>
-      		<div class="well">
-      			<a href="http://www.uniroma3.it/"><img src="http://host.uniroma3.it/uffici/urp/images/RomaTre.jpg"/></a>
-        		<p th:text="#{home.adv.sponsor}">Our sponsor</p>
-      		</div>
-    	</div>
-  	</div>
-</div>
-
-  <footer class="container-fluid text-center">
-    <h4 th:utext="#{home.footer.advice}">Puoi continuare a consultare gli altri quadri nella <a href="gallery">galleria</a>.</h4>
-  </footer>
+              </div>
+              <div th:unless="${listOfThreePainting}" class="item active">
+                <img th:src="@{/img/img-placeholder.png}"/>
+                <div class="carousel-caption">
+                  <h3 th:text="#{home.carousel.no-paintings}">There are no paintings to show yet!</h3>
+                </div>
+              </div>
+            </div>
+    
+            <!--/* Controls */-->
+            <div th:if="${listOfThreePainting}" th:remove="tag">
+              <a class="left carousel-control" href="#dbaab-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only" th:text="#{home.sr-only.previous}">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#dbaab-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only" th:text="#{home.sr-only.next}">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="dbaab-home-footer" class="panel-footer">
+          <div class="well">
+            <div class="well-content-center">
+              <a href="http://www.louvre.fr/en"><img src="http://prenotazioni.parigi.it/img/cover/thumb_161111163223.jpg"/></a>
+              <p th:text="#{home.adv.partnership}">Our partnerships</p>
+            </div>
+          </div>
+          <div class="well">
+            <div class="well-content-center">
+              <a href="http://www.uniroma3.it/"><img src="http://host.uniroma3.it/uffici/urp/images/RomaTre.jpg" /></a>
+              <p th:text="#{home.adv.sponsor}">Our sponsor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:replace="fragments/footer :: foot"></footer>
+  </div>
   <object th:replace="fragments/head :: js"></object>
 </body>
 </html>

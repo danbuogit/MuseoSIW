@@ -1,30 +1,66 @@
 @CHARSET "UTF-8";
 
 /***********************************************************************
+ * page color: #fff
  * base-color: #992525
  * navbar gradient: linear-gradient(to bottom, #992525 0, #711a1a 100%)
  ***********************************************************************/
 
 body {
   padding-top: 51px;
-  background-image: url("background_img.jpg");
-  background-repeat: repeat-y
+  background-color: #420800;
+  background-image: url("/img/background_img.jpg");
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.dbaab-container {
+  background-color: #fff;
 }
 
 @media screen and (min-width: 767px) {
   .dbaab-container {
-    box-shadow: 0px 0px 8px 0px;
+    box-shadow: 0px 0px 8px 2px;
     width: 70%;
   }
 }
 
-img {
-	max-width: 100%;
-	height: auto;
-}
-
 #main-content {
   padding: 20px 15px;
+}
+#main-content > .page-header:first-child {
+  margin-top: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.dropdown .btn .caret, 
+.dropup .btn .caret { 
+  margin-left: 2px; 
+}
+.dropup .btn .caret,
+.dropup .btn.btn-lg .caret {
+  margin-bottom: 3px;
+}
+.dropup .btn.btn-sm .caret,
+.dropup .btn.btn-xs .caret {
+  margin-bottom: 2px;
+}
+
+h1 > .glyphicon:first-child, h2 > .glyphicon:first-child, h3 > .glyphicon:first-child,
+h4 > .glyphicon:first-child, h5 > .glyphicon:first-child, h6 > .glyphicon:first-child {
+  margin-right: 5px;
+}
+.btn > .glyphicon:first-child {
+  margin-right: 3px;
+}
+
+div.tooltip-inner {
+  max-width: 200px;
 }
 
 
@@ -133,6 +169,36 @@ img {
 
 
 /*—————————————————*
+ |     FOOTER      |
+ *—————————————————*/
+.dbaab-footer {
+  display: flex;
+  padding: 15px 5px;
+  border-top: 1px solid #d1cccc;
+  font-size: 12px;
+  color: #6a6c7c;
+}
+.dbaab-footer-fluid {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.dbaab-footer > * {
+  display: flex;
+  margin: auto 0;
+}
+.dbaab-footer > ul {
+  list-style: none;
+  padding: 0;
+}
+.dbaab-footer > .dbaab-footer-left {
+  flex: 1 1 auto;
+}
+.dbaab-footer > .dbaab-footer-right {
+  flex: 0 1 auto;
+}
+
+
+/*—————————————————*
  |     GALLERY     |
  *—————————————————*/
 #dbaab-main-content-header {
@@ -210,6 +276,15 @@ img {
 }
 
 
+/*—————————————————*
+ |     ARTISTS     |
+ *—————————————————*/
+.dbaab-artists-list {
+  max-width: 450px;
+  margin-top: 20px;
+}
+
+
 /***************************************/
 
 .sidenav {
@@ -221,11 +296,6 @@ img {
 /* Set height of the grid so .sidenav can be 100% */
 .row.content {
   height: 450px;
-}
-
-footer {
-  padding: 15px;
-  background-image: linear-gradient(to bottom, #992525 0, #711a1a 100%);
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */

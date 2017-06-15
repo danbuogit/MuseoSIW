@@ -71,9 +71,11 @@
         <span>
             <a th:if="${page}!=0" th:href="@{/gallery(order=${order}, page=${page-1})}" th:text="#{gallery.page-management.previous}">Previous</a> 
             <b th:text="${page}"></b> 
-            <a th:if="${hasNext}" th:href="@{/gallery(order=${order}, page=${page+1})}" th:text="#{gallery.page-management.next}">Next</a></span>
+            <a th:if="${hasNext}" th:href="@{/gallery(order=${order}, page=${page+1})}" th:text="#{gallery.page-management.next}">Next</a>
+        </span>
       </div>
     </div>
+    <footer th:replace="fragments/footer :: foot"></footer>
   </div>
   <object th:replace="fragments/head :: js"></object>
 </body>

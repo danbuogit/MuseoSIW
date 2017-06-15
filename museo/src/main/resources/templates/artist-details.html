@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{artists.details.page-title(${artist} ? ${artist.getNameAndSurname()})}">Artist details</title>
+  <meta th:replace="fragments/head :: head" />
+</head>
+<body>
+  <nav th:replace="fragments/navbar :: nav(2)"></nav>
+  <div class="container dbaab-container">
+    <div id="main-content">
+      <div th:if="${artist}" th:object="${artist}" th:remove="tag">
+        <h1 th:text="${artist.getNameAndSurname()}"></h1>
+        <p>
+          <span th:text="#{artists.details.born-in(*{nation}, *{#dates.format(birthDate, #messages.msg('common.date-format'))})}">Born in {country}, {date}.</span><br/>
+          <span th:if="*{deathDate}" th:text="#{artists.details.died-on(*{#dates.format(deathDate, #messages.msg('common.date-format'))})}">Died in {date}.</span>
+        </p>
+      </div>
+    </div>
+    <footer th:replace="fragments/footer :: foot"></footer>
+  </div>
+  <object th:replace="fragments/head :: js"></object>
+</body>
+</html>
