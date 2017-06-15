@@ -13,7 +13,7 @@
         <div th:each="artist : ${artistList}" th:object="${artist}" th:remove="tag">
           <a class="list-group-item" href="#" th:href="@{/artist(id=*{id})}">
             <span th:text="${artist.getNameAndSurname()}"></span>
-            <span class="badge" th:title="#{artists.tooltip.paintings-number}" th:text="*{paintings.size()}"></span>
+            <span class="badge" th:text="*{paintings.size()}" data-toggle="tooltip" data-placement="right" th:title="#{artists.tooltip.paintings-number}"></span>
           </a>
         </div>
       </div>
@@ -21,5 +21,6 @@
     <footer th:replace="fragments/footer :: footer-fluid"></footer>
   </div>
   <object th:replace="fragments/head :: js"></object>
+  <script>$(document).ready(function () { $('[data-toggle="tooltip"]').tooltip({'container':'body'}) })</script>
 </body>
 </html>
