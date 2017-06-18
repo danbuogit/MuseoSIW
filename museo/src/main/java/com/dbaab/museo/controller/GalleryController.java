@@ -33,25 +33,25 @@ public class GalleryController
 
         if (order == null || order.equals("none"))
         {	
-        	if(!(artist == null || artist.equals("none")))
+        	if(artist == null || artist.equals("none"))
         	{     		
-        		paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist));
-        	}
-        	else
-        	{
                 paintingList = service.findFirst10AtPage(pageIndex);
                 artist = "none";
         	}
+        	else
+        	{
+        		paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist));
+        	}
             order = "none";
         }
-        else if(!(artist == null || artist.equals("none")))
-        {
-        	paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist), order);
-        }
-        else
+        else if(artist == null || artist.equals("none"))
         {
             paintingList = service.findFirst10AtPage(pageIndex, order);
             artist = "none";
+        }
+        else
+        {
+        	paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist), order);
         }
 
         model.addAttribute("paintingList", paintingList);
@@ -60,14 +60,6 @@ public class GalleryController
         model.addAttribute("page", pageIndex);
         model.addAttribute("artistId", artist);
         model.addAttribute("hasNext", paintingList.hasNext());
-
-        return "gallery";
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public String searchPaintingBy(Model model, @RequestParam(value = "searchBy") String order)
-    {
-        // TODO: finire di scrivere metodo
 
         return "gallery";
     }

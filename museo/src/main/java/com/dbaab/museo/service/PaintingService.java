@@ -50,11 +50,6 @@ public class PaintingService
     {
         return this.repository.findFirst3By();
     }
-
-    public List<Painting> findFirst10()
-    {
-        return this.repository.findFirst10By();
-    }
     
     public Page<Painting> findFirst10AtPage(int pageIndex)
     {
