@@ -23,12 +23,12 @@
               <span th:text="#{gallery.orderby-dropdown.label}">Sort by</span> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a th:href="@{/gallery(order=artistName)}" th:text="#{gallery.orderby-dropdown.artist_name}">Artist (name)</a></li>
-              <li><a th:href="@{/gallery(order=artistSurname)}" th:text="#{gallery.orderby-dropdown.artist_surname}">Artist (surname)</a></li>
+              <li><a th:href="@{/gallery(order=artistName, artistId=${artistId})}" th:text="#{gallery.orderby-dropdown.artist_name}">Artist (name)</a></li>
+              <li><a th:href="@{/gallery(order=artistSurname, artistId=${artistId})}" th:text="#{gallery.orderby-dropdown.artist_surname}">Artist (surname)</a></li>
               <li role="separator" class="divider"></li>
-              <li><a th:href="@{/gallery(order=title)}" th:text="#{gallery.orderby-dropdown.title}">Title</a></li>
-              <li><a th:href="@{/gallery(order=yearAsc)}" th:text="#{gallery.orderby-dropdown.year_asc}">Least recent</a></li>
-              <li><a th:href="@{/gallery(order=yearDesc)}" th:text="#{gallery.orderby-dropdown.year_desc}">Most recent</a></li>
+              <li><a th:href="@{/gallery(order=title, artistId=${artistId})}" th:text="#{gallery.orderby-dropdown.title}">Title</a></li>
+              <li><a th:href="@{/gallery(order=yearAsc, artistId=${artistId})}" th:text="#{gallery.orderby-dropdown.year_asc}">Least recent</a></li>
+              <li><a th:href="@{/gallery(order=yearDesc, artistId=${artistId})}" th:text="#{gallery.orderby-dropdown.year_desc}">Most recent</a></li>
             </ul>
           </div>
         </div>
@@ -69,9 +69,9 @@
       </div><!--/*panel*/-->
       <div>
         <span>
-            <a th:if="${page}!=0" th:href="@{/gallery(order=${order}, page=${page-1})}" th:text="#{gallery.page-management.previous}">Previous</a> 
+            <a th:if="${page}!=0" th:href="@{/gallery(order=${order}, page=${page-1}, artistId=${artistId})}" th:text="#{gallery.page-management.previous}">Previous</a> 
             <b th:text="${page}"></b> 
-            <a th:if="${hasNext}" th:href="@{/gallery(order=${order}, page=${page+1})}" th:text="#{gallery.page-management.next}">Next</a>
+            <a th:if="${hasNext}" th:href="@{/gallery(order=${order}, page=${page+1}, artistId=${artistId})}" th:text="#{gallery.page-management.next}">Next</a>
         </span>
       </div>
     </div>

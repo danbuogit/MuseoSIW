@@ -68,6 +68,18 @@ public class PaintingService
     	return painting;
     }
     
+    public Page<Painting> findFirst10AtPageByArtist(int pageIndex, long artistId)
+    {
+    	Page<Painting> painting = this.repository.findFirst10ByArtistId(artistId, goToPage(pageIndex));
+    	return painting;
+    }
+    
+    public Page<Painting> findFirst10AtPageByArtist(int pageIndex, long artistId, String order)
+    {
+    	Page<Painting> painting = this.repository.findFirst10ByArtistId(artistId, goToPage(pageIndex, order));
+    	return painting;
+    }
+    
     private PageRequest goToPage(int pageIndex)
     {
     	return (new PageRequest(pageIndex, 10));

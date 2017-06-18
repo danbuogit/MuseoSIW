@@ -12,7 +12,8 @@
         <h1 th:text="${artist.getNameAndSurname()}"></h1>
         <p>
           <span th:text="#{artists.details.born-in(*{nation}, *{#dates.format(birthDate, #messages.msg('common.date-format'))})}">Born in {country}, {date}.</span><br/>
-          <span th:if="*{deathDate}" th:text="#{artists.details.died-on(*{#dates.format(deathDate, #messages.msg('common.date-format'))})}">Died in {date}.</span>
+          <span th:if="*{deathDate}" th:text="#{artists.details.died-on(*{#dates.format(deathDate, #messages.msg('common.date-format'))})}">Died in {date}.</span><br/><br/>
+          <a th:href="@{/gallery(page=0, artistId=${artist.id})}" th:text="#{artists.details.painting}">Paintings</a>
         </p>
       </div>
     </div>

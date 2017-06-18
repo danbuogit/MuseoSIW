@@ -21,27 +21,44 @@ public class GalleryController
     @RequestMapping(method = RequestMethod.GET)
     public String getFirstTenPictures(Model model,
             @RequestParam(value = "order", required = false) String order,
-            @RequestParam(value = "page", required = false) String page)
+            @RequestParam(value = "page", required = false) String page,
+            @RequestParam(value = "artistId", required = false) String artist)
     {
         Page<Painting> paintingList;
-
+        
         if (page == null)
             page = "0";
 
         int pageIndex = Integer.parseInt(page);
 
         if (order == null || order.equals("none"))
-        {
-            paintingList = service.findFirst10AtPage(pageIndex);
+        {	
+        	if(!(artist == null || artist.equals("none")))
+        	{     		
+        		paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist));
+        	}
+        	else
+        	{
+                paintingList = service.findFirst10AtPage(pageIndex);
+                artist = "none";
+        	}
             order = "none";
         }
+        else if(!(artist == null || artist.equals("none")))
+        {
+        	paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist), order);
+        }
         else
+        {
             paintingList = service.findFirst10AtPage(pageIndex, order);
+            artist = "none";
+        }
 
         model.addAttribute("paintingList", paintingList);
         // used for page management
         model.addAttribute("order", order);
         model.addAttribute("page", pageIndex);
+        model.addAttribute("artistId", artist);
         model.addAttribute("hasNext", paintingList.hasNext());
 
         return "gallery";
