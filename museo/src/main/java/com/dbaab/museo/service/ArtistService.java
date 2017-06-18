@@ -30,11 +30,7 @@ public class ArtistService
     {
         return this.repository.findAll();
     }
-
-    /* we could write: findAllBy(String something){
-     * if(something.equals("name"){
-     *     return this.repository.findAllByName();
-     * ... */
+    
     public List<Artist> findAllOrderedByName()
     {
         return this.repository.findAllByOrderByName();

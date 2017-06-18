@@ -87,9 +87,10 @@ public class PaintingController
     }
 
     @PostMapping("/admins/painting/modify")
-    public String modify(Model model, BindingResult bindingResult,
+    public String modify(Model model,
             @RequestParam(value = "ref", required = true) String referer,
-            @Valid @ModelAttribute("painting") Painting painting)
+            @Valid @ModelAttribute("painting") Painting painting,
+            BindingResult bindingResult)
     {
 
         if (bindingResult.hasErrors())

@@ -21,36 +21,45 @@ public class GalleryController
     @RequestMapping(method = RequestMethod.GET)
     public String getFirstTenPictures(Model model,
             @RequestParam(value = "order", required = false) String order,
-            @RequestParam(value = "page", required = false) String page)
+            @RequestParam(value = "page", required = false) String page,
+            @RequestParam(value = "artistId", required = false) String artist)
     {
         Page<Painting> paintingList;
-
+        
         if (page == null)
             page = "0";
 
         int pageIndex = Integer.parseInt(page);
 
         if (order == null || order.equals("none"))
-        {
-            paintingList = service.findFirst10AtPage(pageIndex);
+        {	
+        	if(artist == null || artist.equals("none"))
+        	{     		
+                paintingList = service.findFirst10AtPage(pageIndex);
+                artist = "none";
+        	}
+        	else
+        	{
+        		paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist));
+        	}
             order = "none";
         }
-        else
+        else if(artist == null || artist.equals("none"))
+        {
             paintingList = service.findFirst10AtPage(pageIndex, order);
+            artist = "none";
+        }
+        else
+        {
+        	paintingList = service.findFirst10AtPageByArtist(pageIndex, Long.parseLong(artist), order);
+        }
 
         model.addAttribute("paintingList", paintingList);
         // used for page management
         model.addAttribute("order", order);
         model.addAttribute("page", pageIndex);
+        model.addAttribute("artistId", artist);
         model.addAttribute("hasNext", paintingList.hasNext());
-
-        return "gallery";
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public String searchPaintingBy(Model model, @RequestParam(value = "searchBy") String order)
-    {
-        // TODO: finire di scrivere metodo
 
         return "gallery";
     }

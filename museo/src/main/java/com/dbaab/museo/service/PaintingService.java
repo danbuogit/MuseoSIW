@@ -50,11 +50,6 @@ public class PaintingService
     {
         return this.repository.findFirst3By();
     }
-
-    public List<Painting> findFirst10()
-    {
-        return this.repository.findFirst10By();
-    }
     
     public Page<Painting> findFirst10AtPage(int pageIndex)
     {
@@ -65,6 +60,18 @@ public class PaintingService
     public Page<Painting> findFirst10AtPage(int pageIndex, String order)
     {
     	Page<Painting> painting = this.repository.findAll(goToPage(pageIndex, order));
+    	return painting;
+    }
+    
+    public Page<Painting> findFirst10AtPageByArtist(int pageIndex, long artistId)
+    {
+    	Page<Painting> painting = this.repository.findFirst10ByArtistId(artistId, goToPage(pageIndex));
+    	return painting;
+    }
+    
+    public Page<Painting> findFirst10AtPageByArtist(int pageIndex, long artistId, String order)
+    {
+    	Page<Painting> painting = this.repository.findFirst10ByArtistId(artistId, goToPage(pageIndex, order));
     	return painting;
     }
     
