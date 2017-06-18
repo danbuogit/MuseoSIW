@@ -16,6 +16,8 @@ import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Artist
 {
@@ -43,6 +45,7 @@ public class Artist
 
     @NotNull
     @OneToMany(mappedBy = "artist")
+    @JsonIgnore
     private List<Painting> paintings;
 
     public Artist()
@@ -50,6 +53,7 @@ public class Artist
         this.paintings = new ArrayList<Painting>();
     }
     
+    @JsonIgnore
     public String getNameAndSurname()
     {
         return String.format("%s %s", this.name, this.surname);
