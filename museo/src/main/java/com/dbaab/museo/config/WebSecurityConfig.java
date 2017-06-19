@@ -1,4 +1,4 @@
-package com.dbaab.museo.security;
+package com.dbaab.museo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

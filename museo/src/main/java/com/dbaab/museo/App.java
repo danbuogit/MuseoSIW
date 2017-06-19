@@ -2,20 +2,15 @@ package com.dbaab.museo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class App extends WebMvcConfigurerAdapter
+public class App extends SpringBootServletInitializer
 {
     public static void main(String[] args)
     {
@@ -35,27 +30,11 @@ public class App extends WebMvcConfigurerAdapter
         if (!quit)
             SpringApplication.run(App.class, args);
     }
-
-    @Bean
-    public LocaleResolver localeResolver()
-    {
-        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-        localeResolver.setDefaultLocale(Locale.ENGLISH);
-        return localeResolver;
-    }
-
-    @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor()
-    {
-        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        interceptor.setParamName("lang");
-        return interceptor;
-    }
-
+    
     @Override
-    public void addInterceptors(InterceptorRegistry registry)
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder)
     {
-        registry.addInterceptor(this.localeChangeInterceptor());
+        return builder.sources(App.class);
     }
 
     private static boolean selectOperation(List<String> argsList)
